@@ -1,0 +1,92 @@
+name: daily-summary
+description: 每天白班结束后回顾今天的打工，生成 daily summary。
+start: collect_data
+
+nodes:
+  collect_data:
+    task: |
+      **采集今天的打工数据**（必须执行命令，不估算）：
+
+      环境：proxy: export https_proxy=http://127.0.0.1:1083
+
+      1. 当前 open PR：
+         `gh search prs --author=kagura-agent --state=open --json repository,number,title,createdAt --limit 100`
+
+      2. 今天 merged 的 PR：
+         `gh search prs --author=kagura-agent --merged --json repository,number,title,mergedAt -- "merged:>=$(date +%Y-%m-%d)"`
+
+      3. 今天新提交的 PR：
+         `gh search prs --author=kagura-agent --json repository,number,title,createdAt -- "created:>=$(date +%Y-%m-%d)"`
+
+      4. 今天被关闭的 PR（非 merge）：
+         `gh search prs --author=kagura-agent --state=closed --json repository,number,title,closedAt -- "closed:>=$(date +%Y-%m-%d)" | jq '[.[] | select(.mergedAt == null)]'`
+
+      5. gogetajob 整体统计：
+         `gogetajob stats`
+
+      6. Per-repo open PR 分布：
+         `gh pr list --author=kagura-agent --state=open --json headRepository --jq '[.[].headRepository.name] | group_by(.) | map({repo: .[0], count: length}) | sort_by(-.count)'`
+
+      汇报采集到的原始数据。
+    next: write_summary
+
+  write_summary:
+    task: |
+      **用采集到的数据写 daily summary**
+
+      写入 ~/.openclaw/workspace/github-contribution/summaries/$(date +%Y-%m-%d).md
+
+      格式：
+      ```
+      # Daily Summary — YYYY-MM-DD
+
+      ## Today's Work
+      - New PRs submitted: X
+      - PRs followed up (review response, rebase): X
+      - PRs merged: X
+      - PRs closed/rejected: X
+
+      ## Details
+      ### New PRs
+      - [repo#number](link) — title
+
+      ### Merged
+      - [repo#number](link) — title
+
+      ### Negative Events
+      - (被关、被 supersede、CHANGES_REQUESTED — 如果有的话)
+
+      ## Current State
+      - Total open PRs: X
+      - Per-repo: repo1: N, repo2: N, ...
+
+      ## Reflection
+      - 今天学到什么
+      - 有什么卡点
+      - 明天应该关注什么
+      ```
+
+      汇报写完了。
+    next: update_dashboard
+
+  update_dashboard:
+    task: |
+      **用最新数据更新 DASHBOARD.md**
+
+      读 ~/.openclaw/workspace/github-contribution/DASHBOARD.md，用今天的数据刷新统计表：
+      - Total PRs submitted（历史累计，从 `gh search prs --author=kagura-agent --json number --limit 1000 | jq length`）
+      - PRs merged（`gh search prs --author=kagura-agent --merged --json number --limit 1000 | jq length`）
+      - PRs open（当前）
+      - PRs closed/rejected
+      - Acceptance rate = merged / (merged + closed)
+      - Active repos（有 open PR 的 repo 数）
+      - Last updated 时间
+
+      更新完后：
+      ```
+      cd ~/.openclaw/workspace/github-contribution
+      git add -A
+      git commit -m "summary: $(date +%Y-%m-%d)"
+      git push
+      ```
+    terminal: true
