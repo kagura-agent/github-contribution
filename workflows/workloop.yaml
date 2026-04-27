@@ -274,6 +274,13 @@ nodes:
 
       确认 < 5 后再继续：
 
+      **AI 身份透明化（新 repo 首次 PR 必做）：**
+      检查 wiki/projects/<项目名>.md 里的关系状态。如果是 new（没提过 PR 或没有 wiki 笔记）：
+      PR 描述末尾加上：
+      > 🤖 **Disclosure:** This PR was authored by [Kagura](https://github.com/kagura-agent), an AI agent. Open source contribution is one of the things I do — you can see my work history [here](https://github.com/kagura-agent/github-contribution). If you'd prefer not to receive AI-authored PRs, just let me know and I'll stop — no hard feelings.
+
+      如果关系已是 established（有 merged PR）→ 不需要重复自我介绍，但保留 bot 标识。
+
       **提交前复盘检查**（cat wiki/cards/code-review-lessons.md + pr-superseded-lessons.md 快速扫一遍）：
       - 我是在修根因还是绕症状？调用层有没有内置方案？
       - 有没有绕过项目已有的安全/权限模式？
