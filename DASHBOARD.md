@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-04-28 20:09 CST
+> Auto-updated by daily summary cron. Last update: 2026-04-28 20:09 CST (evening run)
 
 ## Overview
 
@@ -37,9 +37,11 @@
 
 ## Today (2026-04-28)
 
-- New PRs (external): 4
+- New PRs (external): 4 (morning run)
 - Merged: 0
 - Closed without merge: 4 (openclaw ×1, voltagent ×3)
+- Evening followup: 3 PRs need response (NemoClaw #2510, #2050, hermes-agent #12909)
+- 4 repos at 5-PR limit (kilocode, opencode, phantom, vercel/ai)
 
 ## Weekly Trend
 
