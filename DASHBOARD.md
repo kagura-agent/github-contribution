@@ -1,47 +1,45 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-04-27 20:40 CST
+> Auto-updated by daily summary cron. Last update: 2026-04-28 20:09 CST
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted | 740 |
-| PRs merged | 426 |
-| PRs open | 61 |
-| PRs closed/rejected | 253 |
-| Acceptance rate | 62.7% |
-| Active repos (with open PRs) | 19 |
+| Total PRs submitted | 761 |
+| PRs merged | 449 |
+| PRs open | 55 |
+| PRs closed/rejected | 257 |
+| Acceptance rate | 63.6% |
+| Active repos (with open PRs) | 22 |
 
-## By Repo (Open PRs)
+## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| vercel/ai | 4 |
-| Kilo-Org/kilocode | 4 |
-| anomalyco/opencode | 4 |
+| vercel/ai | 5 |
+| Kilo-Org/kilocode | 5 |
+| anomalyco/opencode | 5 |
+| ghostwright/phantom | 5 |
 | NousResearch/hermes-agent | 4 |
-| ghostwright/phantom | 4 |
-| NVIDIA/NemoClaw | 3 |
-| mcp-use/mcp-use | 2 |
-| coleam00/Archon | 2 |
-| VoltAgent/voltagent | 2 |
+| NVIDIA/NemoClaw | 4 |
+| coleam00/Archon | 3 |
+| browserbase/stagehand | 2 |
 | agents-exist/shell-project | 2 |
 | agents-exist/story | 2 |
-| ValueCell-ai/ClawX | 2 |
-| browserbase/stagehand | 2 |
 | jackwener/OpenCLI | 2 |
-| multica-ai/multica | 1 |
+| multica-ai/multica | 2 |
+| ValueCell-ai/ClawX | 2 |
+| iamtouchskyer/opc | 2 |
+| mcp-use/mcp-use | 1 |
 | openclaw/openclaw | 1 |
-| iamtouchskyer/opc | 1 |
-| HKUDS/DeepTutor | 1 |
 | kenhuangus/stss | 1 |
 
-## Today (2026-04-27)
+## Today (2026-04-28)
 
-- New PRs (external): ~11
-- Merged: 3 (iamtouchskyer/memex ×3)
-- Closed without merge: 4
+- New PRs (external): 4
+- Merged: 0
+- Closed without merge: 4 (openclaw ×1, voltagent ×3)
 
 ## Weekly Trend
 
