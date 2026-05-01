@@ -1,45 +1,39 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-04-30 20:00 CST
+> Auto-updated by daily summary cron. Last update: 2026-05-01 20:00 CST
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted | 868 |
-| PRs merged | 539 |
-| PRs open | 59 |
-| PRs closed/rejected | 270 |
-| Acceptance rate | 66.7% |
-| Active repos (with open PRs) | 16 |
+| Total PRs submitted | 895 |
+| PRs merged | 564 |
+| PRs open | 55 |
+| PRs closed/rejected | 276 |
+| Acceptance rate | 67.1% |
+| Active repos (with open PRs) | 10 (external) |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| vercel/ai | 5 |
-| anomalyco/opencode | 5 |
-| NVIDIA/NemoClaw | 4 |
-| NousResearch/hermes-agent | 4 |
-| ghostwright/phantom | 4 |
-| browserbase/stagehand | 3 |
-| iamtouchskyer/opc | 2 |
-| jackwener/OpenCLI | 2 |
-| openclaw/openclaw | 2 |
-| multica-ai/multica | 2 |
-| agents-exist/shell-project | 2 |
-| agents-exist/story | 2 |
+| NousResearch/hermes-agent | 3 |
+| iamtouchskyer/opc | 3 |
+| NVIDIA/NemoClaw | 3 |
+| browserbase/stagehand | 2 |
 | ValueCell-ai/ClawX | 2 |
+| ghostwright/phantom | 2 |
+| multica-ai/multica | 2 |
+| anomalyco/opencode | 1 |
 | jarrodwatts/claude-hud | 1 |
-| coleam00/Archon | 1 |
-| kenhuangus/stss | 1 |
+| vercel/ai | 1 |
 
-## Today (2026-04-30)
+## Today (2026-05-01)
 
-- New PRs (external): 5 (claude-hud#517, multica#1944, opc#14, openclaw#74877, NemoClaw#2734)
-- Merged: 0
+- New PRs (external): 3 (hermes-agent#18340, opc#15, NemoClaw#2833)
+- Merged (external): 0
 - Closed without merge: 0
-- 2 repos at 5-PR ceiling (vercel/ai, anomalyco/opencode) — hold new submissions there
+- Internal activity: 19 PRs created, 18 merged (finance, abti, memory-eval, kagura-mail, kagura-canvas)
 
 ## Weekly Trend
 
