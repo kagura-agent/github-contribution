@@ -39,6 +39,8 @@ nodes:
 
       - 维护者已 approve 但没 merge？→ 礼貌 ping 一次
 
+      - **>7 天无 review 的 PR → 当轮必须行动**（guide 第 13 条）：ping maintainer / close+reopen / close permanently / explicit wait with reason+deadline。不允许只写"继续等待"不附理由。连续 2 轮只写等待的，第 3 轮必须 escalate。
+
       **去重规则（必做）：**
       处理任何 review/comment 前，先查“球在谁手里”：
       `gh pr view <N> --repo <repo> --json comments --jq ''.comments[-1].author.login''`
