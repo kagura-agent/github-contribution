@@ -1,50 +1,52 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-05-05 20:08 CST
+> Auto-updated by daily summary cron. Last update: 2026-05-06 20:11 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 465 |
-| PRs merged | 145 |
-| PRs open | 38 |
-| PRs closed/rejected | 282 |
-| Acceptance rate | 33.9% |
-| Active repos (with open PRs) | 15 |
+| Total PRs submitted (external) | 455 |
+| PRs merged | 147 |
+| PRs open | 35 |
+| PRs closed/rejected | 273 |
+| Acceptance rate | 35.0% |
+| Active repos (with open PRs) | 16 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
+| iamtouchskyer/opc | 6 |
 | NousResearch/hermes-agent | 5 |
-| iamtouchskyer/opc | 5 |
-| vercel/ai | 4 |
 | ghostwright/phantom | 4 |
-| openclaw/openclaw | 3 |
-| multica-ai/multica | 3 |
 | coleam00/Archon | 3 |
-| anomalyco/opencode | 2 |
 | agents-exist/shell-project | 2 |
 | agents-exist/story | 2 |
-| vscode-icons/vscode-icons | 1 |
-| iamtouchskyer/memex | 1 |
+| browserbase/stagehand | 2 |
+| openclaw/openclaw | 2 |
+| vercel/ai | 2 |
+| HKUDS/DeepTutor | 1 |
 | ValueCell-ai/ClawX | 1 |
-| browserbase/stagehand | 1 |
+| anomalyco/opencode | 1 |
+| iamtouchskyer/memex | 1 |
 | kenhuangus/stss | 1 |
+| multica-ai/multica | 1 |
+| vscode-icons/vscode-icons | 1 |
 
-## Today (2026-05-05)
+## Today (2026-05-06)
 
-- New PRs (external): 4 (openclaw#77790, multica#2088, multica#2080, eliza#7382)
-- Merged (external): 1 (NemoClaw#2245)
-- Closed without merge: 3 (eliza#7382, claude-hud#520, claude-hud#517)
-- Internal activity: 29 PRs created, 28 merged (finance, abti, kagura-mail, memory-eval, gtm, kagura-blog, kagura-canvas, gogetajob, agent-identity)
+- New PRs (external): 5 (hermes-agent#20641, opencode#25994, DeepTutor#449, opc#18, ai#15049)
+- Merged (external): 1 (multica#2080)
+- Closed without merge: 2 (opencode#25994, multica#2088)
+- Internal activity: 17 PRs created (abti, finance, kagura-mail, kagura-blog, kagura-story)
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-05-06 | 5 | 1 | 2 | +3 |
 | 2026-05-05 | 4 | 1 | 3 | 0 |
 | 2026-05-04 | 4 | 0 | 1 | +3 |
 
