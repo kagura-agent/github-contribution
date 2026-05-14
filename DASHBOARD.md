@@ -1,50 +1,44 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-05-13 20:00 CST
+> Auto-updated by daily summary cron. Last update: 2026-05-14 20:00 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 509 |
-| PRs merged | 156 |
-| PRs open | 20 |
-| PRs closed/rejected | 332 |
+| Total PRs submitted (external) | 517 |
+| PRs merged | 157 |
+| PRs open | 24 |
+| PRs closed/rejected | 333 |
 | Acceptance rate | 32.0% |
-| Active repos (with open PRs) | 7 |
+| Active repos (with open PRs) | 10 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| NVIDIA/NemoClaw | 5 |
-| openclaw/openclaw | 4 |
-| anomalyco/opencode | 4 |
-| coleam00/Archon | 3 |
+| multica-ai/multica | 4 |
+| coleam00/Archon | 4 |
+| openclaw/openclaw | 3 |
+| anomalyco/opencode | 3 |
+| NVIDIA/NemoClaw | 3 |
 | vercel/ai | 2 |
-| multica-ai/multica | 1 |
-| browserbase/stagehand | 1 |
+| NousResearch/hermes-agent | 1 |
+| chenhg5/cc-connect | 1 |
+| agents-exist/story | 1 |
 
-## Today (2026-05-13)
+## Today (2026-05-14)
 
-- New PRs (external): 4 (openclaw#81389, openclaw#81336, Archon#1661, Archon#1658)
-- Merged (external): 2 (Archon#1661, Archon#1634)
-- Closed without merge: 7 (hermes-agent×4, opencode×1, ClawX×1, openclaw×1)
-- Internal activity: 11 PRs created (finance×6, kagura-mail×2, memory-eval×1, kagura-blog×1, kagura-mail-docs×1)
+- New PRs (external): 8 (cc-connect#990, Archon#1676, hermes-agent#25528, multica#2581, multica#2571, ClawX#1016, openclaw#81604, multica#2561)
+- Merged (external): 1 (ClawX#1016)
+- Closed without merge: 1 (openclaw#78766 — self-closed, merge conflicts)
+- Superseded: 1 (openclaw#81336 by #75860, closed yesterday)
+- Internal activity: 12 PRs created (finance×8, kagura-mail×2, abti×1, kagura-blog×1)
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-05-14 | 8 | 1 | 1 | +6 |
 | 2026-05-13 | 4 | 2 | 7 | -5 |
-| 2026-05-12 | 4 | 2 | 0 | +2 |
-| 2026-05-11 | 5 | 2 | 6 | -3 |
-| 2026-05-10 | 8 | 3 | 6 | -1 |
-| 2026-05-09 | 3 | 2 | 7 | -6 |
-| 2026-05-08 | 7 | 0 | 3 | +4 |
-| 2026-05-07 | 5 | 0 | 3 | +2 |
-
----
-
-_This file is auto-updated. Do not edit manually._
