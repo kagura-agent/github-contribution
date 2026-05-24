@@ -1,49 +1,52 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-05-23 20:00 CST
+> Auto-updated by daily summary cron. Last update: 2026-05-24 20:00 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 593 |
+| Total PRs submitted (external) | 599 |
 | PRs merged | 191 |
-| PRs open | 48 |
-| PRs closed/rejected | 354 |
-| Acceptance rate | 35.0% |
-| Active repos (with open PRs) | 15 |
+| PRs open | 50 |
+| PRs closed/rejected | 358 |
+| Acceptance rate | 34.8% |
+| Active repos (with open PRs) | 17 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| NVIDIA/NemoClaw | 5 |
-| chenhg5/cc-connect | 5 |
-| NousResearch/hermes-agent | 5 |
-| openclaw/openclaw | 5 |
 | anomalyco/opencode | 5 |
+| chenhg5/cc-connect | 5 |
+| multica-ai/multica | 5 |
+| openclaw/openclaw | 4 |
+| NVIDIA/NemoClaw | 4 |
+| NousResearch/hermes-agent | 4 |
+| QwenLM/qwen-code | 4 |
 | amd/gaia | 4 |
-| multica-ai/multica | 4 |
 | iamtouchskyer/memex | 3 |
 | iamtouchskyer/opc | 3 |
-| QwenLM/qwen-code | 3 |
 | coleam00/Archon | 2 |
+| browserbase/stagehand | 2 |
+| generalaction/emdash | 1 |
+| vercel/ai | 1 |
 | HKUDS/DeepTutor | 1 |
 | Eris2025/awesome-flux | 1 |
 | AINativeLab/awesome-flux-ai | 1 |
-| browserbase/stagehand | 1 |
 
-## Today (2026-05-23)
+## Today (2026-05-24)
 
-- New PRs (external): 12 (openclaw#85705, qwen-code#4461, gaia#1210, gaia#1209, qwen-code#4459, opc#24, qwen-code#4456, opencode#28943, Archon#1749, gaia#1208, DeepTutor#507, NemoClaw#4105)
+- New PRs (external): 6 (emdash#2212, stagehand#2162, deepagents#3565, qwen-code#4474, multica#3147, ai#15584)
 - Merged (external): 0
-- Closed without merge: 0
+- Closed without merge: 4 (NemoClaw#4105, deepagents#3565, openclaw#83084, hermes-agent#25528)
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-05-24 | 6 | 0 | 4 | +2 |
 | 2026-05-23 | 12 | 0 | 0 | +12 |
 | 2026-05-22 | 8 | 0 | 0 | +8 |
 | 2026-05-21 | 9 | 4 | 2 | +3 |
