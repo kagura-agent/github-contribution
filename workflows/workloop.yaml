@@ -16,7 +16,32 @@ nodes:
       这是整轮打工的基调，后续所有步骤都参照这个准则。'
     next: followup
   followup:
-    task: '**Step 1: PR 状态检查**
+    task: '**Step 0: 已承诺 issue 检查**（不能跳过）
+
+      被 assign 了 = 承诺了。承诺了没做 = 比没认领还差。
+
+      ```
+
+      gh search issues --assignee=kagura-agent --state=open --json repository,number,title,updatedAt
+
+      ```
+
+      对每个 assigned issue，检查有没有对应的 open PR：
+
+      `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=open`
+
+      - 有 PR → 已在做，跳过
+
+      - 没有 PR → **未兑现的承诺**，记下来
+
+      如果发现未兑现的 assigned issue → 本轮 find_work 必须优先做这些，不找新活。
+
+      多个未兑现的 → 按 assign 时间排序，先做最早的。
+
+      如果某个 issue 不打算做了 → 去 issue 下评论说明，让 maintainer 取消 assign。不要静默放弃。
+
+
+      **Step 1: PR 状态检查**
 
       用 gogetajob sync 检查所有已提交 PR 的状态。
 
