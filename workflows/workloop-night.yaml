@@ -18,6 +18,10 @@ nodes:
 
       **Step 1: PR 状态检查**
       用 gogetajob sync 检查所有已提交 PR 的状态。
+
+      **兜底交叉验证（不能跳过）：** gogetajob sync 只追踪关注列表里的 repo。用 gh 查全量 open PR 确认没有遗漏：
+      `gh search prs --author=kagura-agent --state=open --json repository,number,title,updatedAt`
+      对比 sync 结果 — 如果有 PR 出现在 gh 搜索但不在 sync 里，说明该 repo 不在 gogetajob 关注列表，立即 `gogetajob scan <owner/repo>` 加入。
       对每个有新 review comment 或 CI 失败的 PR，列出详情。
 
       **球在谁手里？**（每个 PR 必须先判断）
