@@ -46,6 +46,7 @@ nodes:
       - APPROVED + 要求修改（sign-off/rebase/代码改动）→ actionable
       - CHANGES_REQUESTED → actionable
       - PR merged → 记录，检查有无 post-merge feedback
+      - **PR closed + 最后 comment 非 kagura-agent → actionable**（不管谁关的。有人在 closed PR 上对话 = 独立验证 / 想接手 / 建议 reopen / post-close feedback，必须回应。）
       - **PR closed（非作者关闭）→ 🚨 最高优先级！** 读关闭 comment，判断原因：
         - bot/policy 关闭（如 barnacle >10 PRs）→ 声誉事件，立刻清理多余 PR + 汇报
         - maintainer 手动关闭 → 读原因，学习，记 wiki
