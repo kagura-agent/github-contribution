@@ -1,17 +1,17 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-02 20:08 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-02 20:10 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 609 |
-| PRs merged | 202 |
+| Total PRs submitted (external) | 627 |
+| PRs merged | 203 |
 | PRs open | 24 |
-| PRs closed/rejected | 383 |
-| Acceptance rate | 34.5% |
+| PRs closed/rejected | 400 |
+| Acceptance rate | 33.7% |
 | Active repos (with open PRs) | 10 |
 
 ## By Repo — External Open PRs
