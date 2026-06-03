@@ -129,12 +129,39 @@ nodes:
 
       - 跳过了 merged PR 的通知 → post-merge review 是常见模式,不能因为 merged 就跳过'
     branches:
-    - condition: 有待处理的 review 或 CI 问题
+    - condition: 发现未兑现的 assigned issue（assigned 但没有 open PR）
+      next: resolve_assigned
+    - condition: 有待处理的 review 或 CI 问题（所有 assigned issues 已有 open PR 或已解决）
       next: handle_feedback
-    - condition: 所有 PR 状态正常,没有待处理的
+    - condition: 所有 PR 状态正常,没有待处理的,且无未兑现 assigned issue
       next: find_work
     - condition: gogetajob/gh 命令失败(网络、认证、API 限流)
       next: fallback_offline
+  resolve_assigned:
+    task: '**处理未兑现的 assigned issue — 硬 gate，不解决不放行。**
+
+      被 assign 了就是承诺。承诺必须有结局，三选一：
+
+      **选项 A: 本轮做掉** → 直接进 study 节点，本轮目标就是这个 issue。
+
+      **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won\'t be able to work on this, please unassign me"），
+      然后自己 unassign 或请 maintainer 取消。**静默放弃 = 最差选项。**
+
+      **选项 C: 确认不需要 PR** → 仅限特殊情况（如 #4545 分析后认为不是 bug）。
+      必须在 issue 下有充分的分析评论，且等 reporter/maintainer 回复确认。
+      如果超过 7 天无回复 → 再 ping 一次或 unassign。不能无限期挂着。
+
+      **每个未兑现 issue 必须当场决定走哪个选项并执行。**
+      处理完一个后，检查是否还有下一个未兑现 issue。
+      全部处理完才能继续。
+
+      汇报每个 assigned issue 的处理结果和选择的选项。
+      '
+    branches:
+    - condition: 选了选项 A（本轮做掉）
+      next: study
+    - condition: 所有未兑现 issue 已处理（选项 B/C），检查是否有 PR 反馈
+      next: followup
   handle_feedback:
     task: "处理上一步发现的 PR 反馈:\n1. 读 review 评论,理解要求\n2. 修改代码\n3. **本地测试**(不能跳过):\n   a. 读wiki 笔记里的测试命令\n   b. 跑测试,确认全过\n   c. 改了接口/类型?→ grep 所有 mock/stub 文件,确认同步\n   d. `git diff --stat` 检查有没有遗漏的文件\n4. 提交并 push\n5. 在 PR 上回复 reviewer\n处理完所有反馈后汇报结果。\n"
     terminal: true
