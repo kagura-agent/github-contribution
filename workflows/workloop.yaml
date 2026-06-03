@@ -144,7 +144,7 @@ nodes:
 
       **选项 A: 本轮做掉** → 直接进 study 节点，本轮目标就是这个 issue。
 
-      **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won\'t be able to work on this, please unassign me"），
+      **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won''t be able to work on this, please unassign me"），
       然后自己 unassign 或请 maintainer 取消。**静默放弃 = 最差选项。**
 
       **选项 C: 确认不需要 PR** → 仅限特殊情况（如 #4545 分析后认为不是 bug）。
