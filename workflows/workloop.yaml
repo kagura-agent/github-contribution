@@ -13,7 +13,14 @@ nodes:
   align:
     task: '**读准则**:cat ~/.openclaw/workspace/github-contribution/guide.md - 理解为什么打工、两条腿走路、选题原则。
 
-      这是整轮打工的基调,后续所有步骤都参照这个准则。'
+      这是整轮打工的基调,后续所有步骤都参照这个准则。
+
+
+      **DNA Preflight**(不能跳过):
+
+      `bash tools/dna-preflight.sh --context workloop --days 3`
+
+      看最近违反过哪些已有规则,记住这些提醒,本轮避免重犯。'
     next: followup
   followup:
     task: '**Step 0: 已承诺 issue 检查**(不能跳过)
