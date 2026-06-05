@@ -179,13 +179,13 @@ nodes:
 
       **⚠️ Issue 实时状态验证(不能跳过,gogetajob DB 可能过时):**
       对每个候选 issue,用 gh 验证真实状态:
-      `gh issue view <number> --repo <owner/repo> --json state,comments --jq '.state'`
+      `gh issue view <number> --repo <owner/repo> --json state,comments --jq ''.state''`
       - state 不是 OPEN → 跳过,不要选
       - state 是 OPEN → 继续下一步
 
       **⚠️ 已交互 issue 去重(不能跳过,防止重复 claim):**
       对每个候选 issue,检查我是否已经评论过:
-      `gh issue view <number> --repo <owner/repo> --json comments --jq '.comments[] | select(.author.login=="kagura-agent") | .body' | head -5`
+      `gh issue view <number> --repo <owner/repo> --json comments --jq ''.comments[] | select(.author.login=="kagura-agent") | .body'' | head -5`
       - 如果已有 withdraw/放弃评论 → **绝对不再碰这个 issue**
       - 如果已有 claim 评论 → 跳过,已经在做了
       - 没有评论 → 可以选
