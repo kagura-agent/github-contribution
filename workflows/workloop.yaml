@@ -81,9 +81,11 @@ nodes:
 
       - 有 conflict → rebase 并 force push,不要让维护者替你做
 
-      - 维护者已 approve 但没 merge?→ 礼貌 ping 一次
+      - 维护者已 approve 但没 merge?→ 礼貌 ping 一次(仅限第一次发现。如果上轮已 ping 且超过 7 天 → 不再 ping,等 14 天硬性关闭规则触发)
 
-      - **>7 天无 review 的 PR → 当轮必须行动**(guide 第 13 条):ping maintainer / close+reopen / close permanently / explicit wait with reason+deadline。不允许只写"继续等待"不附理由。连续 2 轮只写等待的,第 3 轮必须 escalate。
+      - **>7 天无 review 的 PR → 当轮必须行动**(guide 第 13 条):ping maintainer / close+reopen / close permanently。不允许"wait with reason"——7 天已经是等待期。
+      - **>14 天无 review 的 PR → 硬性关闭**:不 ping,不等,直接 close。14 天无人看 = 不会被看。
+      - **approved 未 merge 超 14 天 → 硬性关闭**:已 ping 过无效 = 不会 merge。close + 记录止损。不允许再 ping。
 
       **去重规则（必做）：** 处理任何 review/comment 前，先查"球在谁手里"。
 
