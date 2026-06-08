@@ -152,6 +152,8 @@ nodes:
       被 assign 了就是承诺。承诺必须有结局，三选一：
 
       **选项 A: 本轮做掉** → 直接进 study 节点，本轮目标就是这个 issue。
+      ⚠️ 如果 assign 已超过 7 天且选 A，必须当轮完成（不能再选 A 然后下轮又没做）。
+      连续 2 轮对同一个 issue 选 A 但没产出 PR → 第 3 轮强制选 B（unassign）。
 
       **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won''t be able to work on this, please unassign me"），
       然后自己 unassign 或请 maintainer 取消。**静默放弃 = 最差选项。**
