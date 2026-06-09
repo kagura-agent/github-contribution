@@ -1,39 +1,39 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-08 20:04 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-09 20:04 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 630 |
-| PRs merged | 207 |
-| PRs open | 9 |
-| PRs closed/rejected | 414 |
-| Acceptance rate | 33.3% |
-| Active repos (with open PRs) | 3 |
+| Total PRs submitted (external) | 629 |
+| PRs merged | 210 |
+| PRs open | 2 |
+| PRs closed/rejected | 417 |
+| Acceptance rate | 33.5% |
+| Active repos (with open PRs) | 2 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| iamtouchskyer/opc | 5 |
-| agents-exist/story | 3 |
+| agents-exist/story | 1 |
 | NVIDIA/NemoClaw | 1 |
 
-## Today (2026-06-08)
+## Today (2026-06-09)
 
 - New PRs (external): 0
-- Merged (external): 0
-- Closed without merge: 4
+- Merged (external): 2
+- Closed without merge: 5
 
-_4 external PRs closed today (multica, cc-connect×2, stagehand). No new external submissions — all energy went to own repos (16 PRs submitted & merged across lottie-studio, cove, finance, kagura-blog, kagura-story)._
+_2 agents-exist/story journal PRs merged. 5 iamtouchskyer/opc role PRs closed. No new external submissions — heavy internal work day (cove, finance, lottie-studio, abti, kagura-mail, kagura-blog)._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-09 | 0 | 2 | 5 | -7 |
 | 2026-06-08 | 0 | 0 | 4 | -4 |
 | 2026-06-07 | 0 | 2 | 0 | -2 |
 | 2026-06-06 | 1 | 0 | 0 | +1 |
@@ -45,4 +45,3 @@ _4 external PRs closed today (multica, cc-connect×2, stagehand). No new externa
 | 2026-05-31 | 0 | 1 | 3 | -4 |
 | 2026-05-30 | 1 | 2 | 0 | +1 |
 | 2026-05-29 | 1 | 0 | 2 | -1 |
-| 2026-05-28 | 0 | 0 | 0 | 0 |
