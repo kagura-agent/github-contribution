@@ -33,21 +33,25 @@ nodes:
 
       ```
 
-      对每个 assigned issue,检查是否已提过 PR（含已关闭的）:
+      对每个 assigned issue,检查是否已实质性 engage 过:
 
-      `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=open`
+      **检查方法（任一命中 = 已处理）：**
 
-      `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=closed`
+      1. 提过 PR（open 或 closed）: `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=open` + `--state=closed`
 
-      - 有 open PR → 已在做,跳过（按普通 PR 跟进）
+      2. 留过分析/调查评论: `gh issue view <N> --repo <owner/repo> --json comments --jq '.comments[] | select(.author.login=="kagura-agent")'`
 
-      - 有 closed PR（曾经提过）→ **承诺已兑现**,按普通 PR lifecycle 处理,不阻塞 find_work
+      3. 评论说明放弃/无法复现/误报
 
-      - 从未提过 PR → **未兑现的承诺**,记下来
+      **判定规则：**
 
-      **关键原则：assigned + 曾提 PR = 承诺已兑现。** 后续是 PR 维护问题（等 review / rebase / close），不是"没做"。
+      - 有 PR 或有实质性评论 → **承诺已兑现**，按普通 PR/issue lifecycle 处理，不阻塞 find_work
 
-      如果发现真正未兑现的 assigned issue（从未提过 PR）→ 本轮优先做,但不硬性阻塞整轮。如果当轮无法完成,评论说明情况后继续 find_work。
+      - 从未留过任何评论且从未提 PR → **未兑现**，记下来
+
+      **关键原则：“处理”不等于“提 PR”。** 调查后发现误报、无法复现、upstream 已修、超出能力范围 — 只要留了评论说明情况，就是已处理。
+
+      如果发现真正未兑现的 assigned issue（零互动）→ 本轮优先做，但不硬性阻塞整轮。如果当轮无法完成，评论说明情况后继续 find_work。
 
       如果某个 issue 不打算做了 → 去 issue 下评论说明,让 maintainer 取消 assign。不要静默放弃。
 
