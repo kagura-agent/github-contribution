@@ -18,6 +18,22 @@
 - 任何场景（学习、调研、聊天）发现值得贡献的项目 → 立刻 `gogetajob scan owner/repo` 加入关注列表
 - 每个项目 open PR ≤ 5，超过就等消化（workloop pr_gate 自动拦截）
 
+## Repo 优先级分级
+
+**find_work 选 issue 时按优先级依次扫描，高优先级 repo 有合适 issue 就选，没有才降级。**
+
+| Tier | Repos | 说明 |
+|------|-------|------|
+| **P1** | openclaw/openclaw | 自己每天用的工具，dogfood 驱动，贡献价值最高 |
+| **P2** | NVIDIA/NemoClaw, NousResearch/hermes-agent | 品牌大、领域对齐、已有积累 |
+| **P3** | 其他 tracked repos（deer-flow, opencode, cc-connect 等）| 机会型，P1/P2 无合适 issue 时再看 |
+
+**规则：**
+1. 每轮 find_work 先 `gogetajob feed` 过滤出 P1 repo 的 issue，有合适的就选
+2. P1 没有 → 扫 P2，P2 没有 → 扫 P3
+3. 同一 tier 内按 issue 质量选（bug > test > doc > feature）
+4. 这个分级可以根据实际情况调整（某个 repo review 太慢就降级，某个 repo 战略重要就升级）
+
 ## 发现新项目的渠道
 
 - GitHub Trending（每日/每周）

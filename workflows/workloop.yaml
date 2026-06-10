@@ -179,6 +179,16 @@ nodes:
   find_work:
     task: '用 gogetajob scan --all 扫描所有活跃公司(公司列表从 gogetajob DB 读取,不硬编码)。
 
+      **⚠️ 按优先级分级选 issue（guide.md「Repo 优先级分级」）：**
+
+      1. 先看 P1（openclaw/openclaw）的 feed — `gogetajob feed` 过滤出 openclaw 的 issue，有合适的就选
+
+      2. P1 没有合适的 → 看 P2（NVIDIA/NemoClaw, NousResearch/hermes-agent）
+
+      3. P2 也没有 → 看 P3（其他 tracked repos）
+
+      同一 tier 内按 issue 质量选（bug > test > doc > feature）。
+
       用 gogetajob feed 查看可做的 issue。
 
       **⚠️ Issue 实时状态验证(不能跳过,gogetajob DB 可能过时):**
