@@ -33,17 +33,21 @@ nodes:
 
       ```
 
-      对每个 assigned issue,检查有没有对应的 open PR:
+      对每个 assigned issue,检查是否已提过 PR（含已关闭的）:
 
       `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=open`
 
-      - 有 PR → 已在做,跳过
+      `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=closed`
 
-      - 没有 PR → **未兑现的承诺**,记下来
+      - 有 open PR → 已在做,跳过（按普通 PR 跟进）
 
-      如果发现未兑现的 assigned issue → 本轮 find_work 必须优先做这些,不找新活。
+      - 有 closed PR（曾经提过）→ **承诺已兑现**,按普通 PR lifecycle 处理,不阻塞 find_work
 
-      多个未兑现的 → 按 assign 时间排序,先做最早的。
+      - 从未提过 PR → **未兑现的承诺**,记下来
+
+      **关键原则：assigned + 曾提 PR = 承诺已兑现。** 后续是 PR 维护问题（等 review / rebase / close），不是"没做"。
+
+      如果发现真正未兑现的 assigned issue（从未提过 PR）→ 本轮优先做,但不硬性阻塞整轮。如果当轮无法完成,评论说明情况后继续 find_work。
 
       如果某个 issue 不打算做了 → 去 issue 下评论说明,让 maintainer 取消 assign。不要静默放弃。
 
@@ -138,11 +142,11 @@ nodes:
 
       - 跳过了 merged PR 的通知 → post-merge review 是常见模式,不能因为 merged 就跳过'
     branches:
-    - condition: 发现未兑现的 assigned issue（assigned 但没有 open PR）
+    - condition: 发现真正未兑现的 assigned issue（assigned 且从未提过任何 PR）
       next: resolve_assigned
-    - condition: 有待处理的 review 或 CI 问题（所有 assigned issues 已有 open PR 或已解决）
+    - condition: 有待处理的 review 或 CI 问题
       next: handle_feedback
-    - condition: 所有 PR 状态正常,没有待处理的,且无未兑现 assigned issue
+    - condition: 所有 PR 状态正常,没有待处理的
       next: find_work
     - condition: gogetajob/gh 命令失败(网络、认证、API 限流)
       next: fallback_offline
