@@ -213,6 +213,13 @@ nodes:
       - 没有评论 → 可以选
       (教训:NemoClaw#4710 已 withdraw 但 work-loop 又自动 claim,造成尴尬)
 
+      **⚠️ 自身已关闭 PR 去重(不能跳过,防止重复提交):**
+      对每个候选 issue,检查我是否已经提过被关/被 supersede 的 PR:
+      `gh pr list --repo <owner/repo> --author=kagura-agent --state=closed --search "<issue号>" --json number -q ''length''`
+      - 结果 > 0 → **这个 issue 我已经失败过,绝对不再碰**
+      - 结果 = 0 → 可以继续
+      (教训:hermes-agent#44640 — PR #44890 被关为 duplicate 后,workloop 次日又选了同一 issue,浪费 ~1h)
+
       选择一个最有价值的 issue:优先选真实 bug > 测试覆盖 > 文档 > feature。
 
       确认没有竞争 PR:`gh pr list --repo owner/repo --search "关键词"` 检查。
