@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-13 20:04 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-14 20:10 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -9,34 +9,35 @@
 |--------|-------|
 | Total PRs submitted (external) | 636 |
 | PRs merged | 210 |
-| PRs open | 6 |
-| PRs closed/rejected | 420 |
-| Acceptance rate | 33.3% |
+| PRs open | 8 |
+| PRs closed/rejected | 418 |
+| Acceptance rate | 33.4% |
 | Active repos (with open PRs) | 6 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
+| openclaw/openclaw | 2 |
+| agents-exist/story | 2 |
 | multica-ai/multica | 1 |
 | anomalyco/opencode | 1 |
-| openclaw/openclaw | 1 |
 | strands-agents/harness-sdk | 1 |
-| agents-exist/story | 1 |
 | browserbase/stagehand | 1 |
 
-## Today (2026-06-13)
+## Today (2026-06-14)
 
-- New PRs (external): 1
+- New PRs (external): 0
 - Merged (external): 0
-- Closed without merge: 2
+- Closed without merge: 0
 
-_One new external PR to multica-ai/multica for email link splitting fix. Two external PRs closed: hermes-agent #44890 (session.resume compression) and NemoClaw #5108 (docs quickstart link). Internally: 17 PRs created, 16 merged across lottie-studio, cove, finance, abti, agent-identity, kagura-mail._
+_Rest day for external contributions. All PR activity was on internal repos (lottie-studio ×6, finance ×3, cove ×3, kagura-mail ×2). 8 external PRs remain open across 6 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-14 | 0 | 0 | 0 | 0 |
 | 2026-06-13 | 1 | 0 | 2 | -1 |
 | 2026-06-12 | 2 | 0 | 1 | +1 |
 | 2026-06-11 | 1 | 0 | 0 | +1 |

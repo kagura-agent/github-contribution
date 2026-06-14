@@ -1,14 +1,23 @@
-# Current Work — 2026-06-13
+# Current Work
 
 ## Issue
-multica-ai/multica#4091 — TipTap autolink splits email addresses mid-input
+- **Repo**: modelcontextprotocol/inspector
+- **Issue**: #1462
+- **Title**: ResourceControls: sections scroll prematurely (equal height-division) + accordion chevrons point up/down instead of right/down
+- **URL**: https://github.com/modelcontextprotocol/inspector/issues/1462
 
-## PR
-https://github.com/multica-ai/multica/pull/4095 — CHANGES_REQUESTED
+## Two Problems
+1. **Premature scrolling**: `panelMaxHeight` divides available height equally among open sections (`/n`), causing scrolling in populated sections while empty sections waste space
+2. **Wrong chevrons**: Default Mantine chevrons point up/down, should point right/down
 
-## Fix needed
-Replace `linkifyjs` (transitive dep) with `detectLinks` from `@multica/ui/markdown/linkify` (internal utility).
-3-line change: switch import, `match.value`→`match.text`, `match.href`→`match.url`, remove eslint-disable.
+## Key Files
+- `clients/web/src/components/groups/ResourceControls/ResourceControls.tsx` (main fix)
+- `ResourceLink.tsx` (existing chevron pattern to follow)
+- `ResourceControls.test.tsx` / `.stories.tsx` (tests/stories to update)
+- `ServerSettingsForm/ServerSettingsForm.tsx` (verify if chevron change is app-wide)
 
-## Status
-Addressing reviewer feedback (Bohan-J + feifeigood)
+## Acceptance Criteria
+- Content-aware height allocation (no premature scrollbar)
+- Chevrons: right=closed, down=open (using RiArrowRightSLine/RiArrowDownSLine)
+- Tests + stories updated
+- `npm run validate` + `npm run test:storybook` pass
