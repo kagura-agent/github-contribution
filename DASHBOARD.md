@@ -1,16 +1,16 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-15 20:07 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-16 20:05 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 636 |
+| Total PRs submitted (external) | 637 |
 | PRs merged | 211 |
 | PRs open | 7 |
-| PRs closed/rejected | 418 |
+| PRs closed/rejected | 419 |
 | Acceptance rate | 33.5% |
 | Active repos (with open PRs) | 5 |
 
@@ -20,22 +20,23 @@
 |------|------|
 | openclaw/openclaw | 2 |
 | agents-exist/story | 2 |
+| can1357/oh-my-pi | 1 |
 | anomalyco/opencode | 1 |
 | strands-agents/harness-sdk | 1 |
-| browserbase/stagehand | 1 |
 
-## Today (2026-06-15)
+## Today (2026-06-16)
 
-- New PRs (external): 0
-- Merged (external): 1 (multica-ai/multica #4095)
-- Closed without merge: 0
+- New PRs (external): 1 (can1357/oh-my-pi #2764)
+- Merged (external): 0
+- Closed without merge: 1 (browserbase/stagehand #2026)
 
-_Another internal-heavy day: 10 new PRs and 11 merges across lottie-studio, finance, cove, kagura-mail. One external merge — multica email link fix. 7 external PRs remain open across 5 repos._
+_Internal-heavy day: 22 new PRs and 21 merges across cove, lottie-studio, finance, abti. One new external PR to oh-my-pi (CLAUDE.md discovery). Stagehand #2026 closed — duplicate fix cleanup. 7 external PRs remain open across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-16 | 1 | 0 | 1 | 0 |
 | 2026-06-15 | 0 | 1 | 0 | -1 |
 | 2026-06-14 | 0 | 0 | 0 | 0 |
 | 2026-06-13 | 1 | 0 | 2 | -1 |
