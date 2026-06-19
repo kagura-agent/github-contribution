@@ -1,18 +1,18 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-18 20:04 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-19 20:08 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 639 |
+| Total PRs submitted (external) | 640 |
 | PRs merged | 214 |
-| PRs open | 5 |
-| PRs closed/rejected | 420 |
-| Acceptance rate | 33.8% |
-| Active repos (with open PRs) | 4 |
+| PRs open | 6 |
+| PRs closed/rejected | 421 |
+| Acceptance rate | 33.7% |
+| Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
@@ -21,20 +21,22 @@
 | openclaw/openclaw | 2 |
 | can1357/oh-my-pi | 1 |
 | anomalyco/opencode | 1 |
-| strands-agents/harness-sdk | 1 |
+| jackwener/OpenCLI | 1 |
+| agents-exist/story | 1 |
 
-## Today (2026-06-18)
+## Today (2026-06-19)
 
-- New PRs (external): 0
+- New PRs (external): 1 (jackwener/OpenCLI #1974)
 - Merged (external): 0
-- Closed without merge: 1 (browserbase/stagehand #2026)
+- Closed without merge: 1 (strands-agents/harness-sdk #2706)
 
-_Internal-heavy day: 21 new PRs and merges across lottie-studio (8), cove (5), finance (4), kagura-mail, agent-identity, abti. One external closure (stagehand #2026). 5 external PRs remain open across 4 repos._
+_Internal-heavy day: 13 new PRs and 11 merges across lottie-studio (8), finance (2), kagura-mail (2), cove (1). One new external PR (OpenCLI). One external closure (harness-sdk). 6 external PRs remain open across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-19 | 1 | 0 | 1 | 0 |
 | 2026-06-18 | 0 | 0 | 1 | -1 |
 | 2026-06-17 | 2 | 3 | 0 | -1 |
 | 2026-06-16 | 1 | 0 | 1 | 0 |
