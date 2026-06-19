@@ -222,7 +222,18 @@ nodes:
 
       选择一个最有价值的 issue:优先选真实 bug > 测试覆盖 > 文档 > feature。
 
-      **⚠️ 竞争 PR 结构化检查（不能跳过，不能用手动命令替代）：**
+      **🔬 Population Funnel（推荐，替代逐个检查的低效模式）：**
+      当有 ≥3 个候选 issue 时，用 funnel 批量筛选（省去逐个失败的时间浪费）：
+      ```
+      echo "owner/repo#111
+      owner/repo#222
+      other/repo#333" | bash tools/issue-funnel.sh
+      ```
+      脚本自动批量检查：state、已交互、已关闭 PR、竞争 PR、open PR 上限、repo 活跃度。
+      输出排名后的存活候选 + 推荐第一名。直接选推荐的，或从存活列表里选。
+      （来源：scholar-loop population funnel — "explore wide, pay narrow"，避免 sequential fail-loop）
+
+      **⚠️ 竞争 PR 结构化检查（如果没用 funnel，则不能跳过）：**
       选定 issue 后立即运行：
       `bash tools/competing-pr-check.sh <owner/repo> <issue-number>`
       脚本退出 1 → **该 issue 不能做，换下一个**。退出 0 → 可以继续。
