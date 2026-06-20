@@ -191,7 +191,7 @@ nodes:
 
       1. 先看 P1（openclaw/openclaw）的 feed — `gogetajob feed` 过滤出 openclaw 的 issue，有合适的就选
 
-      2. P1 没有合适的 → 看 P2（NVIDIA/NemoClaw, NousResearch/hermes-agent）
+      2. P1 没有合适的 → 看 P2（NVIDIA/NemoClaw）
 
       3. P2 也没有 → 看 P3（其他 tracked repos）
 
