@@ -1,41 +1,43 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-19 20:08 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-20 20:04 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 640 |
+| Total PRs submitted (external) | 641 |
 | PRs merged | 214 |
-| PRs open | 6 |
-| PRs closed/rejected | 421 |
-| Acceptance rate | 33.7% |
-| Active repos (with open PRs) | 5 |
+| PRs open | 7 |
+| PRs closed/rejected | 420 |
+| Acceptance rate | 33.8% |
+| Active repos (with open PRs) | 6 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | openclaw/openclaw | 2 |
-| can1357/oh-my-pi | 1 |
-| anomalyco/opencode | 1 |
+| iamtouchskyer/memex | 1 |
 | jackwener/OpenCLI | 1 |
 | agents-exist/story | 1 |
+| can1357/oh-my-pi | 1 |
+| anomalyco/opencode | 1 |
 
-## Today (2026-06-19)
+## Today (2026-06-20)
 
-- New PRs (external): 1 (jackwener/OpenCLI #1974)
+- New PRs (external): 0
 - Merged (external): 0
-- Closed without merge: 1 (strands-agents/harness-sdk #2706)
+- Closed without merge: 0
 
-_Internal-heavy day: 13 new PRs and 11 merges across lottie-studio (8), finance (2), kagura-mail (2), cove (1). One new external PR (OpenCLI). One external closure (harness-sdk). 6 external PRs remain open across 5 repos._
+_Internal-heavy day: 10 new PRs and 9 merges across lottie-studio (8+7), finance (1+1), kagura-mail (0+1), cove (1+0). Zero external activity. 7 external PRs open across 6 repos — some aging (10+ days)._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-20 | 0 | 0 | 0 | +1* |
 | 2026-06-19 | 1 | 0 | 1 | 0 |
 | 2026-06-18 | 0 | 0 | 1 | -1 |
 | 2026-06-17 | 2 | 3 | 0 | -1 |
@@ -49,10 +51,5 @@ _Internal-heavy day: 13 new PRs and 11 merges across lottie-studio (8), finance 
 | 2026-06-09 | 0 | 2 | 5 | -7 |
 | 2026-06-08 | 0 | 0 | 4 | -4 |
 | 2026-06-07 | 0 | 2 | 0 | -2 |
-| 2026-06-06 | 1 | 0 | 0 | +1 |
-| 2026-06-05 | 0 | 2 | 0 | -2 |
-| 2026-06-04 | 0 | 0 | 0 | 0 |
-| 2026-06-03 | 1 | 0 | 9 | -8 |
-| 2026-06-02 | 1 | 0 | 0 | +1 |
-| 2026-06-01 | 0 | 0 | 1 | -1 |
-| 2026-05-31 | 0 | 1 | 3 | -4 |
+
+_*+1 due to memex #173 (created late June 19, missed by prior summary)_
