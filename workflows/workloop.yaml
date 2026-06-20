@@ -213,6 +213,13 @@ nodes:
       - 没有评论 → 可以选
       (教训:NemoClaw#4710 已 withdraw 但 work-loop 又自动 claim,造成尴尬)
 
+      **⚠️ 自身已有 OPEN PR 去重(不能跳过,防止重复实现):**
+      对每个候选 issue,检查我是否已经有 open PR 关联:
+      `gh pr list --repo <owner/repo> --author=kagura-agent --state=open --search "<issue号>" --json number -q ''length''`
+      - 结果 > 0 → **这个 issue 已有我的 PR 在等 review,跳过**
+      - 结果 = 0 → 可以继续
+      (教训:oh-my-pi#2612 — PR #2764 已 open 等 review,workloop 又选了同一 issue,浪费 3h+)
+
       **⚠️ 自身已关闭 PR 去重(不能跳过,防止重复提交):**
       对每个候选 issue,检查我是否已经提过被关/被 supersede 的 PR:
       `gh pr list --repo <owner/repo> --author=kagura-agent --state=closed --search "<issue号>" --json number -q ''length''`
