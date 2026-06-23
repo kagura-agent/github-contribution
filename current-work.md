@@ -1,10 +1,10 @@
 # Current Work
 
 ## Issue
-ValueCell-ai/ClawX#1128 — [Bug]: 客户端界面出现正则表达式解析错误 (Invalid regular expression)
+MoonshotAI/kimi-code#972 — [Bug/Web]Web前端LaTeX公式渲染不正确
 
 ## Summary
-When rendering long text with regex special characters in the chat UI, a SyntaxError is thrown because user content is passed to `String.match()` without escaping special characters. Stack trace points to a text highlighting/matching function that creates a regex from unsanitized user input.
+In the kimi-code web frontend (`kimi web`), LaTeX formula rendering is broken. Different LaTeX delimiters (like $, $$, \( \), \[ \]) are not properly handled — blue highlighted text appears where it shouldn't, and formulas don't render correctly. Clear reproduction: use `kimi web`, prompt model to output E=mc² with different delimiters, observe rendering errors.
 
 ## Status
 find_work selected → moving to pr_gate
