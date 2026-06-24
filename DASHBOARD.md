@@ -1,15 +1,15 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-23 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-24 20:04 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 643 |
+| Total PRs submitted (external) | 644 |
 | PRs merged | 214 |
-| PRs open | 9 |
+| PRs open | 10 |
 | PRs closed/rejected | 421 |
 | Acceptance rate | 33.7% |
 | Active repos (with open PRs) | 8 |
@@ -18,8 +18,8 @@
 
 | Repo | Open |
 |------|------|
+| openclaw/openclaw | 2 |
 | iamtouchskyer/memex | 2 |
-| openclaw/openclaw | 1 |
 | modelcontextprotocol/inspector | 1 |
 | jackwener/OpenCLI | 1 |
 | agents-exist/story | 1 |
@@ -27,18 +27,19 @@
 | anomalyco/opencode | 1 |
 | ValueCell-ai/ClawX | 1 |
 
-## Today (2026-06-23)
+## Today (2026-06-24)
 
-- New PRs (external): 0
+- New PRs (external): 1 (openclaw#96371)
 - Merged (external): 0
-- Closed without merge: 1 (openclaw#91885)
+- Closed without merge: 0
 
-_Internal-heavy day: 12 new PRs and 11 merges across lottie-studio (6+6), cove (3+2), abti (2+2), kagura-mail (1+1). One external PR closed (openclaw#91885, stale after 12 days). 9 external PRs open across 8 repos — oldest aging 12-13 days (openclaw#92665, opencode#31860). New external: ClawX#1130 (from 06-22)._
+_Massive internal day: 25 new PRs, 20 merged across abti (10+10), lottie-studio (6+5), finance (3+3), cove (2+0), kagura-mail (1+0), moltbook (1+1), kagura-canvas (1+1). One new external PR: openclaw#96371 (tool error suppression fix). External open count 9→10 across 8 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-24 | 1 | 0 | 0 | +1 |
 | 2026-06-23 | 0 | 0 | 1 | 0* |
 | 2026-06-22 | 1 | 0 | 0 | +1** |
 | 2026-06-21 | 1 | 0 | 0 | +2*** |
@@ -52,7 +53,6 @@ _Internal-heavy day: 12 new PRs and 11 merges across lottie-studio (6+6), cove (
 | 2026-06-13 | 1 | 0 | 2 | -1 |
 | 2026-06-12 | 2 | 0 | 1 | +1 |
 | 2026-06-11 | 1 | 0 | 0 | +1 |
-| 2026-06-10 | 3 | 0 | 0 | +3 |
 
 _*Net 0: openclaw#91885 closed (-1) but ClawX#1130 (created 06-22) was already in open count_
 _**+1: ClawX#1130 (fix regex SyntaxError)_
