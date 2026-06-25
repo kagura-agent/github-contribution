@@ -1,5 +1,25 @@
 # PR Review Feedback TODO
 
+## openclaw/openclaw#96651 — fix(memory-core): recover primary embedding provider after transient outage
+
+**Status (2026-06-25 12:10)**: ClawSweeper review at 03:34 UTC — verdict `needs-human`, blocked until fixes + proof.
+
+### [P1] Disable fallback when probing primary recovery
+- File: `extensions/memory-core/src/memory/manager-sync-ops.ts:2688`
+- Issue: `primaryRequest` carries configured fallback. If primary still down but local fallback succeeds, `createEmbeddingProvider` returns provider with `fallbackFrom`; code then clears fallback state incorrectly.
+- Fix: Pass `fallback: "none"` to recovery probe OR reject result when `primaryResult.fallbackFrom` is set.
+
+### [P1] Fix TypeScript errors in recovery test harness
+- File: `extensions/memory-core/src/memory/manager-provider-recovery.test.ts:56-57`
+- Issue: TS2416 (providerLifecycle override type mismatch) + TS2445 (protected member access)
+- Fix: Type harness as `MemoryProviderLifecycleState`, expose setter for lifecycle setup
+
+### [P0] Add real behavior proof
+- Need redacted terminal output/logs showing memory_search fallback during outage and recovery after primary returns
+- After fixing code, generate proof from local test run
+
+---
+
 ## openclaw/openclaw#92665 — fix(llm): honor cacheRetention for LiteLLM-proxied Anthropic models
 
 **Status (2026-06-18 06:30)**: clawsweeper re-review at 22:23 UTC kept verdict `needs-human` — my P1 fix at c3001b9d is incomplete.
