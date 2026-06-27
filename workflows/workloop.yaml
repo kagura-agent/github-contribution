@@ -93,7 +93,7 @@ nodes:
 
       - **>7 天无 review 的 PR → 当轮必须行动**(guide 第 13 条):ping maintainer / close+reopen / close permanently。不允许"wait with reason"——7 天已经是等待期。
         **⚠️ Ping 去重（必做）：** 行动前先查我最近 3 天是否已 ping 过该 PR：
-        `gh pr view <N> --repo <repo> --json comments --jq '.comments | map(select(.author.login=="kagura-agent" and (.createdAt | fromdateiso8601) > (now - 259200))) | length'`
+        `gh pr view <N> --repo <repo> --json comments --jq ''.comments | map(select(.author.login=="kagura-agent" and (.createdAt | fromdateiso8601) > (now - 259200))) | length''`
         结果 > 0 → **跳过 ping，不重复骚扰**。等上次 ping 满 3 天后再考虑下一步行动。
         结果 = 0 → 执行 ping / close / reopen。
       - **>14 天无 review 的 PR → 硬性关闭**:不 ping,不等,直接 close。14 天无人看 = 不会被看。
