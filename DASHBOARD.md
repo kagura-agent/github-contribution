@@ -1,43 +1,46 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-27 20:30 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-28 20:13 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 650 |
+| Total PRs submitted (external) | 653 |
 | PRs merged | 214 |
-| PRs open | 10 |
-| PRs closed/rejected | 426 |
-| Acceptance rate | 33.4% |
-| Active repos (with open PRs) | 7 |
+| PRs open | 12 |
+| PRs closed/rejected | 427 |
+| Acceptance rate | 33.3% |
+| Active repos (with open PRs) | 9 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| openclaw/openclaw | 2 |
-| agents-exist/story | 2 |
+| agents-exist/story | 3 |
 | iamtouchskyer/memex | 2 |
+| QwenLM/qwen-code | 1 |
+| anomalyco/opencode | 1 |
+| can1357/oh-my-pi | 1 |
 | ValueCell-ai/ClawX | 1 |
 | modelcontextprotocol/inspector | 1 |
 | jackwener/OpenCLI | 1 |
-| can1357/oh-my-pi | 1 |
+| openclaw/openclaw | 1 |
 
-## Today (2026-06-27)
+## Today (2026-06-28)
 
-- New PRs (external): 0
+- New PRs (external): 3 (qwen-code#5957, opencode#34267, oh-my-pi#3703)
 - Merged (external): 0
-- Closed without merge: 0 (1 late-capture from June 26: openclaw#96981)
+- Closed without merge: 2 (oh-my-pi#3703, openclaw#96371)
 
-_Quiet external day. All energy on internal projects: 12 new PRs across lottie-studio (5), abti (3), finance, kagura-mail, moltbook. Open count corrected from 12 → 10 (openclaw#96981 late close + opencode stale entry)._
+_Active submission day but no merges. oh-my-pi#3703 closed ~15s after creation (auto-close or superseded). openclaw#96371 finally closed after weeks open. 11 days without an external merge — backlog growing._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-28 | 3 | 0 | 2 | +1 |
 | 2026-06-27 | 0 | 0 | 0 | -2* |
 | 2026-06-26 | 1 | 0 | 1 | 0 |
 | 2026-06-25 | 1 | 0 | 1 | +2** |
