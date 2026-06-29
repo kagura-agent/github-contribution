@@ -1,5 +1,18 @@
 # PR Review Feedback TODO
 
+## QwenLM/qwen-code #5957 — fix(core): subtract reserved output tokens from context window
+
+**Status (2026-06-28 22:30)**: CHANGES_REQUESTED Round 2 by wenshao (12:43 UTC). Critical design flaw identified.
+
+### [P0] Fix reservedOutputTokens sourcing — params.config.maxOutputTokens is undefined in interactive flow
+- **Root cause**: `turn.ts:376` calls `chat.sendMessageStream(model, { message, config: { abortSignal } })` — no `maxOutputTokens` in config. So `params.config?.maxOutputTokens ?? 0` = 0, making both auto and hard threshold subtractions no-ops.
+- **Real output budget sources**: `samplingParams.max_tokens` (user/env override) or `ESCALATED_MAX_TOKENS` (escalation ceiling). NOT `params.config.maxOutputTokens`.
+- **Fix approach**: Derive reserve from actual output budget — `Math.max(ESCALATED_MAX_TOKENS, tokenLimit(model, 'output'))` when no user override, else `samplingParams.max_tokens`.
+- **Test gap**: Current 4 tests inject `reservedOutputTokens` directly into `service.compress()`, bypassing the real call chain. Need `sendMessageStream`-level integration test.
+- **Reply posted**: 2026-06-28 14:32 UTC acknowledging issue, committing to v2.
+
+---
+
 ## openclaw/openclaw#96651 — fix(memory-core): recover primary embedding provider after transient outage
 
 **Status (2026-06-25 12:10)**: ClawSweeper review at 03:34 UTC — verdict `needs-human`, blocked until fixes + proof.
@@ -40,7 +53,18 @@
 - **Mystery**: c3001b9d diff only touches `openai-completions.ts/test.ts` + `anthropic-family-cache-semantics.ts/test.ts`. plugin-sdk test files identical to upstream/main (where test passes). Likely indirect type/build interaction — needs investigation
 - Workloop action: reproduce locally on c3001b9d, bisect against 78d91256 (previous PR commit) to confirm regression source
 
-## Completed
+---
+
+## NVIDIA/NemoClaw #5924 — inference set error message improvement
+
+**Status (2026-06-29 10:13)**: Assigned to kagura-agent. Ready to implement.
+
+### Task
+- Improve error message when `nemoclaw inference set` is used with unregistered provider
+- Show list of registered providers + hint to run `nemoclaw onboard`
+- Volunteered 2026-06-28, assigned same day
+
+---
 
 ## Completed
 - [x] QwenLM/qwen-code #4456 — MERGED ✅ (was CHANGES_REQUESTED Round 2)

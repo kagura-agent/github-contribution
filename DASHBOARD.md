@@ -1,18 +1,18 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-06-28 20:13 CST
+> Auto-updated by daily summary cron. Last update: 2026-06-29 20:04 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 653 |
+| Total PRs submitted (external) | 654 |
 | PRs merged | 214 |
-| PRs open | 12 |
+| PRs open | 13 |
 | PRs closed/rejected | 427 |
-| Acceptance rate | 33.3% |
-| Active repos (with open PRs) | 9 |
+| Acceptance rate | 33.4% |
+| Active repos (with open PRs) | 10 |
 
 ## By Repo — External Open PRs
 
@@ -20,6 +20,7 @@
 |------|------|
 | agents-exist/story | 3 |
 | iamtouchskyer/memex | 2 |
+| NVIDIA/NemoClaw | 1 |
 | QwenLM/qwen-code | 1 |
 | anomalyco/opencode | 1 |
 | can1357/oh-my-pi | 1 |
@@ -28,18 +29,19 @@
 | jackwener/OpenCLI | 1 |
 | openclaw/openclaw | 1 |
 
-## Today (2026-06-28)
+## Today (2026-06-29)
 
-- New PRs (external): 3 (qwen-code#5957, opencode#34267, oh-my-pi#3703)
+- New PRs (external): 1 (NemoClaw#5983)
 - Merged (external): 0
-- Closed without merge: 2 (oh-my-pi#3703, openclaw#96371)
+- Closed without merge: 0
 
-_Active submission day but no merges. oh-my-pi#3703 closed ~15s after creation (auto-close or superseded). openclaw#96371 finally closed after weeks open. 11 days without an external merge — backlog growing._
+_Light external day — one new PR to NVIDIA/NemoClaw. 12 days without an external merge. Internal projects (lottie-studio, abti, finance, cove) got most attention today._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-06-29 | 1 | 0 | 0 | +1 |
 | 2026-06-28 | 3 | 0 | 2 | +1 |
 | 2026-06-27 | 0 | 0 | 0 | -2* |
 | 2026-06-26 | 1 | 0 | 1 | 0 |
