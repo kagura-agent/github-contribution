@@ -69,3 +69,27 @@
 ## Completed
 - [x] QwenLM/qwen-code #4456 — MERGED ✅ (was CHANGES_REQUESTED Round 2)
 - [x] QwenLM/qwen-code #4474 — MERGED ✅ (was CHANGES_REQUESTED Round 2)
+
+---
+
+## QwenLM/qwen-code #6104 — fix: lazy-load memory prompt when indexes are empty
+
+**Status (2026-07-01 20:10)**: CHANGES_REQUESTED Round 3 by wenshao (automated, 11:32 UTC). 4 Critical findings.
+
+### [P0] Critical 1: Condensed save section missing maintenance directives
+- condensed path omits 4 directives from full protocol: name/description/type sync, semantic organization, remove stale memories, cross-directory dedup
+- Fix: include these in condensed save section
+
+### [P0] Critical 2: No logging for condensed vs full path decision
+- Every other file in memory/ uses createDebugLogger. This function (consequential branching) has no trace.
+- Fix: Add debug logger call at the branch point
+
+### [P0] Critical 3: condensedDoNotSave drifts from WHAT_NOT_TO_SAVE_SECTION
+- Hand-written paraphrase with concrete differences (drops "conventions", "project structure")
+- Fix: Derive condensed version from shared code/constants
+
+### [P1] Critical 4: appendToUserMemory missing BuildMemoryPromptOptions param
+- Public API wrapper doesn't forward new options parameter
+- Fix: Add optional options param to appendToUserMemory
+
+**Action**: workloop code fix needed. Claude Code assignment.

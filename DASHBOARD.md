@@ -1,45 +1,45 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-01 20:04 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-02 20:05 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 658 |
+| Total PRs submitted (external) | 660 |
 | PRs merged | 215 |
-| PRs open | 12 |
-| PRs closed/rejected | 431 |
-| Acceptance rate | 33.3% |
-| Active repos (with open PRs) | 9 |
+| PRs open | 9 |
+| PRs closed/rejected | 436 |
+| Acceptance rate | 33.0% |
+| Active repos (with open PRs) | 8 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| agents-exist/story | 4 |
+| openclaw/openclaw | 2 |
+| anomalyco/opencode | 1 |
+| agents-exist/story | 1 |
 | EKKOLearnAI/hermes-studio | 1 |
+| modelcontextprotocol/inspector | 1 |
 | NVIDIA/NemoClaw | 1 |
-| NousResearch/hermes-agent | 1 |
 | QwenLM/qwen-code | 1 |
 | ValueCell-ai/ClawX | 1 |
-| anomalyco/opencode | 1 |
-| modelcontextprotocol/inspector | 1 |
-| openclaw/openclaw | 1 |
 
-## Today (2026-07-01)
+## Today (2026-07-02)
 
-- New PRs (external): 3 (hermes-agent#56274, NemoClaw#6122, qwen-code#6104)
-- Merged (external): 1 (qwen-code#5957) 🎉
-- Closed without merge: 4 (memex#174, memex#173, OpenCLI#1974, oh-my-pi#2764)
+- New PRs (external): 2 (openclaw#99047, qwen-code#6155)
+- Merged (external): 0
+- Closed without merge: 0
 
-_First external merge in 14 days! qwen-code#5957 broke the drought. Heavy closure day (4 rejections). Internal sprint: 11 merges across lottie-studio/abti/kagura-mail/finance/moltbook._
+_Quiet external day — 2 new PRs, no merges or closures. Heavy internal sprint: 18 PRs across abti/finance/lottie-studio/moltbook/cove/kagura-mail._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-02 | 2 | 0 | 0 | +2 |
 | 2026-07-01 | 3 | 1 | 4 | -2 |
 | 2026-06-30 | 1 | 0 | 1 | +1* |
 | 2026-06-29 | 1 | 0 | 0 | +1 |
