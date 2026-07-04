@@ -1,17 +1,17 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-03 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-04 20:13 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 663 |
-| PRs merged | 215 |
+| Total PRs submitted (external) | 664 |
+| PRs merged | 216 |
 | PRs open | 12 |
 | PRs closed/rejected | 436 |
-| Acceptance rate | 33.0% |
+| Acceptance rate | 33.1% |
 | Active repos (with open PRs) | 8 |
 
 ## By Repo — External Open PRs
@@ -22,23 +22,24 @@
 | QwenLM/qwen-code | 2 |
 | NVIDIA/NemoClaw | 2 |
 | agents-exist/story | 2 |
+| rohitg00/agentmemory | 1 |
 | anomalyco/opencode | 1 |
 | EKKOLearnAI/hermes-studio | 1 |
 | ValueCell-ai/ClawX | 1 |
-| modelcontextprotocol/inspector | 1 |
 
-## Today (2026-07-03)
+## Today (2026-07-04)
 
-- New PRs (external): 3 (qwen-code#6225, NemoClaw#6211, story#14*)
-- Merged (external): 0
-- Closed without merge: 0
+- New PRs (external): 1 (qwen-code#6300)
+- Merged (external): 1 (qwen-code#6225)
+- Closed without merge: 1 (inspector#1506)
 
-_*story#14 late entry from last night. Quiet external day for merges. Heavy internal sprint: 17 PRs merged across abti/lottie-studio/finance/moltbook/cove._
+_qwen-code productive — second merge there. inspector#1506 closed. Heavy internal sprint: 17 PRs merged across abti/lottie-studio/finance/kagura-mail/moltbook._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-04 | 1 | 1 | 1 | 0 |
 | 2026-07-03 | 3 | 0 | 0 | +3* |
 | 2026-07-02 | 2 | 0 | 0 | +2 |
 | 2026-07-01 | 3 | 1 | 4 | -2 |
