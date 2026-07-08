@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-07 20:12 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-08 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -9,10 +9,10 @@
 |--------|-------|
 | Total PRs submitted (external) | 668 |
 | PRs merged | 218 |
-| PRs open | 11 |
-| PRs closed/rejected | 439 |
-| Acceptance rate | 33.2% |
-| Active repos (with open PRs) | 6 |
+| PRs open | 10 |
+| PRs closed/rejected | 440 |
+| Acceptance rate | 33.1% |
+| Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
@@ -23,20 +23,20 @@
 | anomalyco/opencode | 2 |
 | NVIDIA/NemoClaw | 2 |
 | EKKOLearnAI/hermes-studio | 1 |
-| openclaw/openclaw | 1 |
 
-## Today (2026-07-07)
+## Today (2026-07-08)
 
-- New PRs (external): 1 (agentmemory#1028)
+- New PRs (external): 0
 - Merged (external): 0
-- Closed without merge: 1 (astryx#3561)
+- Closed without merge: 1 (openclaw/openclaw#96651)
 
-_Mixed day: 1 new external PR (agentmemory provider fix), astryx#3561 closed by maintainers. Internally very productive — 9 PRs merged across lottie-studio (6), cove (2), abti (1). lottie-studio social features now complete (likes, comments, follows, notifications, collab editing). 11 external PRs still awaiting review._
+_Quiet external day — no new submissions or merges. openclaw#96651 (memory-core embedding provider recovery) was closed without merge. Internally productive: 16 PRs merged across abti (5 question redesigns), lottie-studio (5 features/docs), kagura-mail (5 features/fixes), finance (1). 10 external PRs still awaiting review across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-08 | 0 | 0 | 1 | -1 |
 | 2026-07-07 | 1 | 0 | 1 | 0 |
 | 2026-07-06 | 0 | 1 | 0 | -1 |
 | 2026-07-05 | 1 | 0 | 2 | -1 |
@@ -51,4 +51,3 @@ _Mixed day: 1 new external PR (agentmemory provider fix), astryx#3561 closed by 
 | 2026-06-26 | 1 | 0 | 1 | 0 |
 | 2026-06-25 | 1 | 0 | 1 | +2 |
 | 2026-06-24 | 1 | 0 | 0 | +1 |
-| 2026-06-23 | 0 | 0 | 1 | 0 |

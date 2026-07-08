@@ -1,7 +1,31 @@
 name: workloop-night
 description: 下班时间轻量打工 — 只跟进手上的 PR，不开新的
-start: followup
+start: dedup_gate
 nodes:
+  dedup_gate:
+    task: |
+      **夜间去重门禁（Day 6 carry-forward 修复）**
+
+      快速检查是否有新变化，避免重复执行：
+      1. 获取所有 open PR 的最新 review/comment 时间戳：
+         `gh search prs --author=kagura-agent --state=open --json number,repository,updatedAt --jq 'sort_by(.number) | map("\(.repository.nameWithOwner)#\(.number):\(.updatedAt)") | join("\n")'`
+      2. 读取上次状态文件：`cat /tmp/workloop-night-state.txt 2>/dev/null || echo "no-previous"`
+      3. 比较当前状态和上次状态
+      4. 将当前状态写入 `/tmp/workloop-night-state.txt`
+
+      如果状态完全相同（没有任何 PR 的 updatedAt 变化）→ 无增量信息，直接跳 done
+      如果有变化或没有上次状态 → 继续正常 followup
+    branches:
+      - condition: 状态与上次完全相同，无增量信息
+        next: done_dedup
+      - condition: 有变化，或首次运行
+        next: followup
+
+  done_dedup:
+    task: |
+      状态无变化，跳过本轮。不写 memory（避免重复记录）。
+    terminal: true
+
   followup:
     task: |
       **只跟进已有 PR，不找新 issue。**
