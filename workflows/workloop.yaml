@@ -643,9 +643,14 @@ nodes:
 
       - PASS → 继续
 
-      - NEEDS_WORK → 读 findings,判断是否需要修(HIGH 必须修,MEDIUM 判断,LOW 可记录不修)
+      - NEEDS_WORK → 读 findings，**先验证 reviewer 假设再行动**:
+        (1) 对每个 HIGH finding：验证 reviewer 的前提假设是否正确（reviewer 没有完整源码上下文，可能基于错误推断——如把 sync 函数误判为 async、把内部 API 误当 public API）
+        (2) 假设正确 → 必须修
+        (3) 假设错误 → 标记 false positive，记录到 gradient，继续
+        (4) MEDIUM → 判断（验证假设同上）；LOW → 可记录不修
+        (教训: hermes-studio#1998 — reviewer 看到 DB write 就假设 async，实际是 sync function，差点引入不必要的 await 重构)
 
-      - 修完后重新跑 review 直到 PASS
+      - 修完后重新跑 review 直到 PASS（或所有 HIGH findings 已验证为 false positive）
 
 
       **判定规则:**
