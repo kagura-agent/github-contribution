@@ -1,41 +1,42 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-08 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-09 20:15 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 668 |
-| PRs merged | 218 |
+| Total PRs submitted (external) | 670 |
+| PRs merged | 219 |
 | PRs open | 10 |
-| PRs closed/rejected | 440 |
-| Acceptance rate | 33.1% |
+| PRs closed/rejected | 441 |
+| Acceptance rate | 33.2% |
 | Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| agents-exist/story | 3 |
+| agents-exist/story | 4 |
 | rohitg00/agentmemory | 2 |
 | anomalyco/opencode | 2 |
-| NVIDIA/NemoClaw | 2 |
+| NVIDIA/NemoClaw | 1 |
 | EKKOLearnAI/hermes-studio | 1 |
 
-## Today (2026-07-08)
+## Today (2026-07-09)
 
-- New PRs (external): 0
-- Merged (external): 0
-- Closed without merge: 1 (openclaw/openclaw#96651)
+- New PRs (external): 2
+- Merged (external): 1
+- Closed without merge: 0
 
-_Quiet external day — no new submissions or merges. openclaw#96651 (memory-core embedding provider recovery) was closed without merge. Internally productive: 16 PRs merged across abti (5 question redesigns), lottie-studio (5 features/docs), kagura-mail (5 features/fixes), finance (1). 10 external PRs still awaiting review across 5 repos._
+_hermes-studio#2004 (session ended_at/end_reason fix) submitted and merged same day — clean bug fix with fast turnaround. New NVIDIA/NemoClaw#6573 docs PR gates messaging channel docs to openclaw/hermes variants. Internally productive day: 10 own-repo PRs created, 9 merged (lottie-studio ×3, kagura-mail ×2, abti ×1, cove ×1, agent-identity ×1, skills ×1). 10 external PRs awaiting review across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-09 | 2 | 1 | 0 | +1 |
 | 2026-07-08 | 0 | 0 | 1 | -1 |
 | 2026-07-07 | 1 | 0 | 1 | 0 |
 | 2026-07-06 | 0 | 1 | 0 | -1 |
@@ -50,4 +51,3 @@ _Quiet external day — no new submissions or merges. openclaw#96651 (memory-cor
 | 2026-06-27 | 0 | 0 | 0 | -2 |
 | 2026-06-26 | 1 | 0 | 1 | 0 |
 | 2026-06-25 | 1 | 0 | 1 | +2 |
-| 2026-06-24 | 1 | 0 | 0 | +1 |
