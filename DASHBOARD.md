@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-09 20:15 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-10 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -9,10 +9,10 @@
 |--------|-------|
 | Total PRs submitted (external) | 670 |
 | PRs merged | 219 |
-| PRs open | 10 |
-| PRs closed/rejected | 441 |
-| Acceptance rate | 33.2% |
-| Active repos (with open PRs) | 5 |
+| PRs open | 8 |
+| PRs closed/rejected | 443 |
+| Acceptance rate | 33.1% |
+| Active repos (with open PRs) | 4 |
 
 ## By Repo — External Open PRs
 
@@ -20,22 +20,22 @@
 |------|------|
 | agents-exist/story | 4 |
 | rohitg00/agentmemory | 2 |
-| anomalyco/opencode | 2 |
-| NVIDIA/NemoClaw | 1 |
+| anomalyco/opencode | 1 |
 | EKKOLearnAI/hermes-studio | 1 |
 
-## Today (2026-07-09)
+## Today (2026-07-10)
 
-- New PRs (external): 2
-- Merged (external): 1
-- Closed without merge: 0
+- New PRs (external): 0
+- Merged (external): 0
+- Closed without merge: 1
 
-_hermes-studio#2004 (session ended_at/end_reason fix) submitted and merged same day — clean bug fix with fast turnaround. New NVIDIA/NemoClaw#6573 docs PR gates messaging channel docs to openclaw/hermes variants. Internally productive day: 10 own-repo PRs created, 9 merged (lottie-studio ×3, kagura-mail ×2, abti ×1, cove ×1, agent-identity ×1, skills ×1). 10 external PRs awaiting review across 5 repos._
+_Quiet day for external contributions. opencode#34267 closed without merge. Internally active: 10 own-repo PRs created/merged across abti, lottie-studio, kagura-mail. 8 external PRs awaiting review across 4 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-10 | 0 | 0 | 1 | -2 |
 | 2026-07-09 | 2 | 1 | 0 | +1 |
 | 2026-07-08 | 0 | 0 | 1 | -1 |
 | 2026-07-07 | 1 | 0 | 1 | 0 |
