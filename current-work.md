@@ -1,10 +1,10 @@
 # Current Work
 
 ## Issue
-EKKOLearnAI/hermes-studio#1998 — Agent 正常結束後 session 的 ended_at/end_reason 未寫入數據庫，UI 永久顯示「思考中」
+openclaw/openclaw#104951 — Heartbeat scheduler cadence decays after ~24h uptime
 
 ## Summary
-Add `updateSession(ended_at, end_reason)` calls at three run termination points in `handle-bridge-run.ts` to properly mark sessions as complete when bridge runs finish.
+Use fresh `Date.now()` at 4 post-`runOnce()` `advanceAgentSchedule()` call sites instead of stale `now` captured at run start. Prevents immediate refire when runOnce takes significant wall-clock time.
 
 ## Status
-PR #2004 submitted ✅ — waiting for review
+PR #105120 submitted ✅ — waiting for review

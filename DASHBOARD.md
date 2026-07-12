@@ -1,18 +1,18 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-11 20:18 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-12 20:13 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 671 |
+| Total PRs submitted (external) | 673 |
 | PRs merged | 219 |
-| PRs open | 9 |
+| PRs open | 11 |
 | PRs closed/rejected | 443 |
 | Acceptance rate | 33.1% |
-| Active repos (with open PRs) | 4 |
+| Active repos (with open PRs) | 6 |
 
 ## By Repo — External Open PRs
 
@@ -20,21 +20,24 @@
 |------|------|
 | agents-exist/story | 5 |
 | rohitg00/agentmemory | 2 |
+| openclaw/openclaw | 1 |
+| ValueCell-ai/ClawX | 1 |
 | anomalyco/opencode | 1 |
 | EKKOLearnAI/hermes-studio | 1 |
 
-## Today (2026-07-11)
+## Today (2026-07-12)
 
-- New PRs (external): 0
+- New PRs (external): 2
 - Merged (external): 0
 - Closed without merge: 0
 
-_Zero external activity today — all energy went to internal projects (lottie-studio ×5, abti ×3, kagura-mail ×2). 8 internal PRs merged. 9 external PRs still awaiting review across 4 repos._
+_Two new external PRs today: openclaw heartbeat fix and ClawX Windows CLI spawn fix. Internal repos busy (lottie-studio ×7, abti ×5 — all merged internally). 11 external PRs awaiting review across 6 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-12 | 2 | 0 | 0 | +2 |
 | 2026-07-11 | 0 | 0 | 0 | 0 |
 | 2026-07-10 | 0 | 0 | 1 | -2 |
 | 2026-07-09 | 2 | 1 | 0 | +1 |
