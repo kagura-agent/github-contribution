@@ -1,40 +1,41 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-13 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-14 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 673 |
+| Total PRs submitted (external) | 674 |
 | PRs merged | 219 |
-| PRs open | 9 |
-| PRs closed/rejected | 445 |
-| Acceptance rate | 33.0% |
+| PRs open | 11 |
+| PRs closed/rejected | 444 |
+| Acceptance rate | 33.1% |
 | Active repos (with open PRs) | 4 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| agents-exist/story | 5 |
+| agents-exist/story | 6 |
+| openclaw/openclaw | 2 |
 | rohitg00/agentmemory | 2 |
-| openclaw/openclaw | 1 |
 | anomalyco/opencode | 1 |
 
-## Today (2026-07-13)
+## Today (2026-07-14)
 
-- New PRs (external): 0
+- New PRs (external): 1
 - Merged (external): 0
-- Closed without merge: 2
+- Closed without merge: 0
 
-_Quiet day for external contributions — no new submissions or merges. Two PRs closed without merge (ClawX#1157, hermes-studio#1861). All active work today was on internal repos (lottie-studio refactoring/testing, abti data updates). 9 external PRs remain open across 4 repos._
+_1 new external PR: openclaw/openclaw#106971 (exec-approvals lock contention fix). No external merges or closures. Most work today on internal repos (lottie-studio tests, abti data, cove plugin). 11 external PRs remain open across 4 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-14 | 1 | 0 | 0 | +1 |
 | 2026-07-13 | 0 | 0 | 2 | -2 |
 | 2026-07-12 | 2 | 0 | 0 | +2 |
 | 2026-07-11 | 0 | 0 | 0 | 0 |
