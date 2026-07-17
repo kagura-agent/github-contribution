@@ -1,10 +1,10 @@
 # Current Work
 
 ## Issue
-openclaw/openclaw#104951 — Heartbeat scheduler cadence decays after ~24h uptime
+openclaw/openclaw#109638 — sessions_yield deadlock: stripSessionsYieldArtifacts leaves trailing assistant messages blocking auto-announce
 
 ## Summary
-Use fresh `Date.now()` at 4 post-`runOnce()` `advanceAgentSchedule()` call sites instead of stale `now` captured at run start. Prevents immediate refire when runOnce takes significant wall-clock time.
+Extend stripSessionsYieldArtifacts() to also strip trailing regular assistant messages after yield artifact removal. Prevents deadlock when sub-agent completion tries to inject continuation.
 
 ## Status
-PR #105120 submitted ✅ — waiting for review
+PR #109806 submitted ✅ — waiting for review
