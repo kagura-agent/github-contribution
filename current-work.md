@@ -1,10 +1,12 @@
 # Current Work
 
-## Issue
-openclaw/openclaw#109638 — sessions_yield deadlock: stripSessionsYieldArtifacts leaves trailing assistant messages blocking auto-announce
-
-## Summary
-Extend stripSessionsYieldArtifacts() to also strip trailing regular assistant messages after yield artifact removal. Prevents deadlock when sub-agent completion tries to inject continuation.
-
 ## Status
-PR #109806 submitted ✅ — waiting for review
+No active work — last workloop (2026-07-18 09:02) found no viable issue.
+
+## Blockers
+- **Preflight size gate**: 500MB limit blocks openclaw/openclaw (1.9GB) and iOfficeAI/AionUi (666MB) despite having local clones
+- **Competing PRs**: deer-flow, clawcodex, openclaude all saturated with competing PRs
+- **Complexity**: multica-ai/multica#5596 evaluated but too complex/vague for first-time repo
+
+## Next Priority
+Fix preflight-repo.sh to skip size check when local clone exists at ~/repos/forks/

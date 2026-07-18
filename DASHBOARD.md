@@ -1,41 +1,41 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-17 20:21 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-18 20:15 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 678 |
+| Total PRs submitted (external) | 679 |
 | PRs merged | 219 |
 | PRs open | 13 |
-| PRs closed/rejected | 446 |
+| PRs closed/rejected | 447 |
 | Acceptance rate | 32.9% |
-| Active repos (with open PRs) | 5 |
+| Active repos (with open PRs) | 4 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | agents-exist/story | 7 |
+| openclaw/openclaw | 3 |
 | generalaction/emdash | 2 |
-| openclaw/openclaw | 2 |
-| anomalyco/opencode | 1 |
 | rohitg00/agentmemory | 1 |
 
-## Today (2026-07-17)
+## Today (2026-07-18)
 
-- New PRs (external): 2
+- New PRs (external): 1
 - Merged (external): 0
 - Closed without merge: 0
 
-_Two external PRs: openclaw sessions_yield artifact fix and emdash SSH BaseAgent instanceof fix. Internal repos busy (lottie-studio ×5, kagura-mail ×1, abti ×1). 13 external PRs open across 5 repos._
+_One new external PR to openclaw (messaging tool suppression bypass). Heavy internal day — lottie-studio ×8, kagura-mail ×2, abti ×1 all merged. 13 external PRs open across 4 repos (anomalyco/opencode PR no longer open)._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-18 | 1 | 0 | 0 | +1 |
 | 2026-07-17 | 2 | 0 | 0 | +2 |
 | 2026-07-16 | 2 | 0 | 0 | +2 |
 | 2026-07-15 | 0 | 0 | 0 | 0 |
