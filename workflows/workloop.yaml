@@ -23,133 +23,57 @@ nodes:
       看最近违反过哪些已有规则,记住这些提醒,本轮避免重犯。'
     next: followup
   followup:
-    task: '**Step 0: 已承诺 issue 检查**(不能跳过)
+    task: '运行 followup 脚本获取结构化 PR/issue 状态：
 
-      被 assign 了 = 承诺了。承诺了没做 = 比没认领还差。
 
       ```
 
-      gh search issues --assignee=kagura-agent --state=open --json repository,number,title,updatedAt
+      bash ~/.openclaw/workspace/tools/workloop-followup.sh 2>&1
 
       ```
 
-      对每个 assigned issue,检查是否已实质性 engage 过:
 
-      **检查方法（任一命中 = 已处理）：**
-
-      1. 提过 PR（open 或 closed）: `gh pr list --repo <owner/repo> --author=kagura-agent --search "<issue号>" --state=open` + `--state=closed`
-
-      2. 留过分析/调查评论: `gh issue view <N> --repo <owner/repo> --json comments --jq ''.comments[] | select(.author.login=="kagura-agent")''`
-
-      3. 评论说明放弃/无法复现/误报
-
-      **判定规则：**
-
-      - 有 PR 或有实质性评论 → **承诺已兑现**，按普通 PR/issue lifecycle 处理，不阻塞 find_work
-
-      - 从未留过任何评论且从未提 PR → **未兑现**，记下来
-
-      **关键原则：“处理”不等于“提 PR”。** 调查后发现误报、无法复现、upstream 已修、超出能力范围 — 只要留了评论说明情况，就是已处理。
-
-      如果发现真正未兑现的 assigned issue（零互动）→ 本轮优先做，但不硬性阻塞整轮。如果当轮无法完成，评论说明情况后继续 find_work。
-
-      如果某个 issue 不打算做了 → 去 issue 下评论说明,让 maintainer 取消 assign。不要静默放弃。
+      读脚本输出的 SUMMARY 和 RECOMMENDED BRANCH，判断走哪个分支。
 
 
-      **Step 1: PR 状态检查**
+      **脚本会检查：**
 
-      用 gogetajob sync 检查所有已提交 PR 的状态。
+      - 已承诺 issue（assigned 但从未互动的）
 
-      **兜底交叉验证（不能跳过）：** gogetajob sync 只追踪关注列表里的 repo。用 gh 查全量 open PR 确认没有遗漏：
+      - 所有 open PR 状态（review state、ball ownership、age、conflict）
 
-      `gh search prs --author=kagura-agent --state=open --json repository,number,title,updatedAt`
+      - Per-repo PR 数量
 
-      对比 sync 结果 — 如果有 PR 出现在 gh 搜索但不在 sync 里，说明该 repo 不在 gogetajob 关注列表，立即 `gogetajob scan <owner/repo>` 加入。
-
-      （qwen-code#4474 教训：3 个 PR 有未处理的 CHANGES_REQUESTED，但 qwen-code 不在关注列表，gogetajob sync 完全看不到，连续多天漏检。）
-
-      对每个有新 review comment 或 CI 失败的 PR,列出详情。
-
-      重要:sync 结果出来后,每个标了需要处理的 PR 都要点进去看详情,
-
-      区分真人 review 和 bot review(如 coderabbitai)。
-
-      优先级:真人反馈 > CI 失败 > bot review(nitpick)。
-
-      如果有需要处理的反馈,说明具体是哪个 PR、什么反馈、是真人还是 bot。
-
-      对于被关闭的 PR:读关闭原因,如果别人的方案更好,去学那个方案写wiki 笔记。
+      - GitHub 通知
 
 
-      **PR 维护检查**(每个 open PR 都要过):
+      **对脚本输出中标记为 ACTION NEEDED 的项：**
 
-      - 上次更新距今超过 1 周?→ 检查是否需要 rebase
+      - CHANGES_REQUESTED → 球在我手里，必须改代码（回 comment 说"会改"不算处理）
 
-      - `gh pr view <N> --repo <repo> --json mergeable` 看有没有 conflict
+      - HARD_CLOSE → >14d 无 review，直接 close
 
-      - 有 conflict → rebase 并 force push,不要让维护者替你做
+      - NEEDS_PING → >7d 无 review，ping 一次（但先确认 3 天内没 ping 过）
 
-      - 维护者已 approve 但没 merge?→ 礼貌 ping 一次(仅限第一次发现。如果上轮已 ping 且超过 7 天 → 不再 ping,等 14 天硬性关闭规则触发)
+      - CONFLICT → rebase 并 force push
 
-      - **>7 天无 review 的 PR → 当轮必须行动**(guide 第 13 条):ping maintainer / close+reopen / close permanently。不允许"wait with reason"——7
-      天已经是等待期。 **⚠️ Ping 去重（必做）：** 行动前先查我最近 3 天是否已 ping 过该 PR： `gh pr view <N> --repo <repo> --json comments --jq ''.comments
-      | map(select(.author.login=="kagura-agent" and (.createdAt | fromdateiso8601) > (now - 259200))) | length''` 结果 > 0
-      → **跳过 ping，不重复骚扰**。等上次 ping 满 3 天后再考虑下一步行动。 结果 = 0 → 执行 ping / close / reopen。 - **>14 天无 review 的 PR → 硬性关闭**:不 ping,不等,直接
-      close。14 天无人看 = 不会被看。 - **approved 未 merge 超 14 天 → 硬性关闭**:已 ping 过无效 = 不会 merge。close + 记录止损。不允许再 ping。
+      - COMMENT → 检查是否需要回复
 
-      **去重规则（必做）：** 处理任何 review/comment 前，先查"球在谁手里"。
-
-      **Step A: 查 review 状态**（最高优先级）：
-
-      `gh pr view <N> --repo <repo> --json reviews --jq ''.reviews | map(select(.author.login != "kagura-agent")) | last |
-      "\(.author.login) \(.state)"''`
-
-      - CHANGES_REQUESTED → 再查我最后 push 时间 vs review 时间：
-
-      `gh pr view <N> --repo <repo> --json commits --jq ''.commits[-1].committedDate''`
-
-      - push 在 review 之后 → 已处理，球在对方（等 re-review）
-
-      - push 在 review 之前或没有新 push → **球在我手里，必须改代码**（回 comment 说"会改"不算处理！）
-
-      - APPROVED → 球在对方（等 merge）
-
-      - COMMENTED → 往下看 Step B
-
-      **Step B: 查 comment 归属**（review 状态无异常时）：
-
-      `gh pr view <N> --repo <repo> --json comments --jq ''.comments[-1].author.login''`
-
-      - 最后一条 comment 是 kagura-agent → 球在对方手里
-
-      - 最后一条 comment 是对方 → 球在我手里
-
-      **核心原则：回复 comment ≠ 解决 review。CHANGES_REQUESTED 只有 push 代码才算处理。**
-
-      （qwen-code#4474 教训：回了"会改"但没 push，去重规则判定球在对方，实际未兑现）
-
-      **Step 2: Per-repo PR 存量审计**(不能跳过) 运行 `gh pr list --author=kagura-agent --state=open --json headRepository --jq ''[.[].headRepository.name]
-      | group_by(.) | map({repo: .[0], count: length}) | sort_by(-.count) | .[] | "\(.repo): \(.count)"''` 列出每个 repo 的 open
-      PR 数量。 - 超过 5 个的 repo → 标记为「存量超限」,按 PR 存量管理规则处理(主动关闭 >21天无 review 的 PR)
-
-      **Step 3: GitHub 通知检查**(不能跳过)
-
-      运行 `gh api notifications --paginate --jq ".[].subject | {title, url, type}"` 查看未读通知(必须 --paginate 拿全量)。
-
-      重点关注:issue comment(maintainer 回复你的 issue)、PR review(post-merge feedback)、mention。
-
-      merged PR 的通知也要看--post-merge review 是常见模式,不能因为 merged 就跳过。
-
-      处理完后标已读:`gh api -X PUT notifications --field read=true --field last_read_at="$(date -u +%Y-%m-%dT%H:%M:%SZ)"`
+      - STALE_APPROVED → approved 但 >14d 未 merge，close
 
 
-      **🚩 Red Flags - 如果出现以下症状,你在走过场不是在 followup:**
+      **对被关闭的 PR**:读关闭原因,如果别人的方案更好,去学那个方案写 wiki 笔记。
 
-      - sync 结果出来直接说"全部正常"没有点进去看详情 → 你在读标题不是在处理
 
-      - 通知全部标已读但没处理任何一条 → 你在清收件箱不是在响应
+      **分支判断规则：**
 
-      - 跳过了 merged PR 的通知 → post-merge review 是常见模式,不能因为 merged 就跳过'
+      - 有 UNFULFILLED assigned issue → resolve_assigned
+
+      - 有 ACTION NEEDED 项 → handle_feedback
+
+      - 一切正常 → find_work（不允许在 followup 后结束轮次！）
+
+      '
     branches:
     - condition: 发现真正未兑现的 assigned issue（assigned 且从未提过任何 PR）
       next: resolve_assigned
@@ -186,66 +110,50 @@ nodes:
       \ 改了接口/类型?→ grep 所有 mock/stub 文件,确认同步\n   d. `git diff --stat` 检查有没有遗漏的文件\n4. 提交并 push\n5. 在 PR 上回复 reviewer\n处理完所有反馈后汇报结果。\n"
     terminal: true
   find_work:
-    task: '用 gogetajob scan --all 扫描所有活跃公司(公司列表从 gogetajob DB 读取,不硬编码)。
+    task: '运行 find_work 脚本获取可做的 issue 列表：
 
-      **⚠️ 按优先级分级选 issue（guide.md「Repo 优先级分级」）：**
 
-      1. 先看 P1（openclaw/openclaw）的 feed — `gogetajob feed` 过滤出 openclaw 的 issue，有合适的就选
+      ```
 
-      2. P1 没有合适的 → 看 P2（NVIDIA/NemoClaw）
+      bash ~/.openclaw/workspace/tools/workloop-find-issue.sh 2>&1
 
-      3. P2 也没有 → 看 P3（其他 tracked repos）
+      ```
 
-      同一 tier 内按 issue 质量选（bug > test > doc > feature）。
 
-      用 gogetajob feed 查看可做的 issue。
+      读脚本输出的 RECOMMENDED ISSUES 列表。
 
-      **⚠️ Issue 实时状态验证(不能跳过,gogetajob DB 可能过时):** 对每个候选 issue,用 gh 验证真实状态: `gh issue view <number> --repo <owner/repo> --json
-      state,comments --jq ''.state''` - state 不是 OPEN → 跳过,不要选 - state 是 OPEN → 继续下一步
 
-      **⚠️ 已交互 issue 去重(不能跳过,防止重复 claim):** 对每个候选 issue,检查我是否已经评论过: `gh issue view <number> --repo <owner/repo> --json comments
-      --jq ''.comments[] | select(.author.login=="kagura-agent") | .body'' | head -5` - 如果已有 withdraw/放弃评论 → **绝对不再碰这个 issue**
-      - 如果已有 claim 评论 → 跳过,已经在做了 - 没有评论 → 可以选 (教训:NemoClaw#4710 已 withdraw 但 work-loop 又自动 claim,造成尴尬)
+      **脚本自动完成：**
 
-      **⚠️ 自身已有 OPEN PR 去重(不能跳过,防止重复实现):** 对每个候选 issue,检查我是否已经有 open PR 关联: `gh pr list --repo <owner/repo> --author=kagura-agent
-      --state=open --search "<issue号>" --json number -q ''length''` - 结果 > 0 → **这个 issue 已有我的 PR 在等 review,跳过** - 结果 = 0
-      → 可以继续 (教训:oh-my-pi#2612 — PR #2764 已 open 等 review,workloop 又选了同一 issue,浪费 3h+)
+      - gogetajob scan --all（扫描所有 tracked repos）
 
-      **⚠️ 自身已关闭 PR 去重(不能跳过,防止重复提交):** 对每个候选 issue,检查我是否已经提过被关/被 supersede 的 PR: `gh pr list --repo <owner/repo> --author=kagura-agent
-      --state=closed --search "<issue号>" --json number -q ''length''` - 结果 > 0 → **这个 issue 我已经失败过,绝对不再碰** - 结果 = 0 → 可以继续
-      (教训:hermes-agent#44640 — PR #44890 被关为 duplicate 后,workloop 次日又选了同一 issue,浪费 ~1h)
+      - gogetajob feed（按优先级排序）
 
-      选择一个最有价值的 issue:优先选真实 bug > 测试覆盖 > 文档 > feature。
+      - 批量 gate 过滤（state、已交互、open PR 去重、closed PR 去重、竞争 PR、per-repo 上限）
 
-      **🔬 Population Funnel（推荐，替代逐个检查的低效模式）：** 当有 ≥3 个候选 issue 时，用 funnel 批量筛选（省去逐个失败的时间浪费）： ``` echo "owner/repo#111 owner/repo#222
-      other/repo#333" | bash tools/issue-funnel.sh ``` 脚本自动批量检查：state、已交互、已关闭 PR、竞争 PR、open PR 上限、repo 活跃度。 输出排名后的存活候选 + 推荐第一名。直接选推荐的，或从存活列表里选。
-      （来源：scholar-loop population funnel — "explore wide, pay narrow"，避免 sequential fail-loop）
+      - 输出存活候选排名
 
-      **⚠️ 竞争 PR 结构化检查（如果没用 funnel，则不能跳过）：** 选定 issue 后立即运行： `bash tools/competing-pr-check.sh <owner/repo> <issue-number>`
-      脚本退出 1 → **该 issue 不能做，换下一个**。退出 0 → 可以继续。 （教训：inspector#32371 — 选中 issue 没查竞争 PR，实现完才发现已有人提了 PR 且 CI 绿了，浪费整轮实现时间）
 
-      **黑名单 repo(绝对不碰):** - mastra-ai/mastra - anti-AI-PR policy (intojhanurag bulk-closed 5 PRs: "No AI serving PRs")
+      **选择规则：**
 
-      **前置过滤(每个候选 repo 必须先过,不过的直接跳过,不进 study):**
+      - 脚本推荐 #1 → 优先选它，除非有明确理由选别的
 
-      - 检查我们在该 repo 的 open PR 数量:`gh pr list --repo owner/repo --author=kagura-agent --state=open`,≤ 4 才考虑(提完不超过 5)。**注意:不设总数上限,只管
-      per-repo**
+      - 优先级：P1(openclaw) > P2(NemoClaw) > P3(其他)
 
-      - 检查 issue 有无竞争 PR:`gh pr list --repo owner/repo --search "issue号 OR 关键词"`
+      - 同 tier 内：bug > test > doc > feature
 
-      - 检查 repo 活跃度:最后 commit/merge/maintainer 回复是什么时候?超过 2 周无活动 → 不提新 PR
+      - 选有 wiki 笔记的 repo 优先（已有知识积累效率更高）
 
-      选题 tips:
 
-      - 选有wiki 笔记的 repo 优先(已有知识积累效率更高)
+      **如果脚本输出 "NO VIABLE ISSUES"：**
 
-      - 高星项目先查竞争 PR,别白做
+      - 走 discover 分支，找新项目
 
-      - 安全/基础设施类 issue 先看 related issues,打包修复 > 逐个提
 
-      - 维护者 merge 统计很重要(内部优先的 repo 堆外部 PR 没意义)
+      **黑名单 repo（绝对不碰）：**
 
-      - 选 issue 前 git log 确认相关代码是否还存在(可能已被删/修)
+      - mastra-ai/mastra — anti-AI-PR policy
+
 
       汇报选中的 issue 和理由。
 
@@ -643,12 +551,9 @@ nodes:
 
       - PASS → 继续
 
-      - NEEDS_WORK → 读 findings，**先验证 reviewer 假设再行动**:
-        (1) 对每个 HIGH finding：验证 reviewer 的前提假设是否正确（reviewer 没有完整源码上下文，可能基于错误推断——如把 sync 函数误判为 async、把内部 API 误当 public API）
-        (2) 假设正确 → 必须修
-        (3) 假设错误 → 标记 false positive，记录到 gradient，继续
-        (4) MEDIUM → 判断（验证假设同上）；LOW → 可记录不修
-        (教训: hermes-studio#1998 — reviewer 看到 DB write 就假设 async，实际是 sync function，差点引入不必要的 await 重构)
+      - NEEDS_WORK → 读 findings，**先验证 reviewer 假设再行动**: (1) 对每个 HIGH finding：验证 reviewer 的前提假设是否正确（reviewer 没有完整源码上下文，可能基于错误推断——如把
+      sync 函数误判为 async、把内部 API 误当 public API） (2) 假设正确 → 必须修 (3) 假设错误 → 标记 false positive，记录到 gradient，继续 (4) MEDIUM → 判断（验证假设同上）；LOW
+      → 可记录不修 (教训: hermes-studio#1998 — reviewer 看到 DB write 就假设 async，实际是 sync function，差点引入不必要的 await 重构)
 
       - 修完后重新跑 review 直到 PASS（或所有 HIGH findings 已验证为 false positive）
 
