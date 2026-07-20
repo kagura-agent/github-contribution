@@ -108,7 +108,11 @@ nodes:
   handle_feedback:
     task: "处理上一步发现的 PR 反馈:\n1. 读 review 评论,理解要求\n2. 修改代码\n3. **本地测试**(不能跳过):\n   a. 读wiki 笔记里的测试命令\n   b. 跑测试,确认全过\n   c.\
       \ 改了接口/类型?→ grep 所有 mock/stub 文件,确认同步\n   d. `git diff --stat` 检查有没有遗漏的文件\n4. 提交并 push\n5. 在 PR 上回复 reviewer\n处理完所有反馈后汇报结果。\n"
-    terminal: true
+    branches:
+    - condition: 有实际需要处理的人类 review 反馈，已修改代码并 push
+      next: done
+    - condition: 反馈全部是 bot/non-actionable，无需改代码
+      next: find_work
   find_work:
     task: '运行 find_work 脚本获取可做的 issue 列表：
 
