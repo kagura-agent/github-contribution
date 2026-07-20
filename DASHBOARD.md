@@ -1,40 +1,42 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-19 20:08 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-20 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 680 |
+| Total PRs submitted (external) | 682 |
 | PRs merged | 223 |
-| PRs open | 8 |
-| PRs closed/rejected | 449 |
-| Acceptance rate | 33.2% |
-| Active repos (with open PRs) | 4 |
+| PRs open | 9 |
+| PRs closed/rejected | 450 |
+| Acceptance rate | 33.1% |
+| Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | agents-exist/story | 3 |
-| openclaw/openclaw | 2 |
 | generalaction/emdash | 2 |
-| rohitg00/agentmemory | 1 |
+| openclaw/openclaw | 2 |
+| NVIDIA/NemoClaw | 1 |
+| anomalyco/opencode | 1 |
 
-## Today (2026-07-19)
+## Today (2026-07-20)
 
-- New PRs (external): 1
-- Merged (external): 4
-- Closed without merge: 1
+- New PRs (external): 2
+- Merged (external): 0
+- Closed without merge: 0
 
-_NVIDIA/NemoClaw#7195 submitted and closed same day. Story journal batch merge (#13-#16). 8 external PRs open across 4 repos._
+_NVIDIA/NemoClaw#7226 (e2e retry fix) and anomalyco/opencode#37834 (EPIPE handling) submitted. 9 external PRs open across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-20 | 2 | 0 | 0 | +2 |
 | 2026-07-19 | 1 | 4 | 1 | +0 |
 | 2026-07-18 | 1 | 0 | 0 | +1 |
 | 2026-07-17 | 2 | 0 | 0 | +2 |
