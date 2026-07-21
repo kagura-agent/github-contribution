@@ -1,16 +1,16 @@
 # Current Work
 
 ## Status
-Last workloop (2026-07-20 15:15) submitted PR #7226 to NVIDIA/NemoClaw.
+Last workloop (2026-07-21 13:20) submitted PR #112084 to openclaw/openclaw.
 
 ## Latest PR
-- **NVIDIA/NemoClaw#7226** — fix(e2e): add retry to PR gate observer GitHub reads
-- **Issue**: #7207
-- **Status**: PENDING (CI passing, CodeRabbit + PR advisors pending review)
-- **Diff**: 2 files, +179 lines (additive only)
+- **openclaw/openclaw#112084** — fix(agents): use lastSeenAtMs tie-break in canvas default-node selection
+- **Issue**: #112020
+- **Status**: PENDING (CI green, awaiting review)
+- **Diff**: 2 files, +39 lines (additive only, 5 lines in comparator + 18 test lines)
 
 ## Blockers
 - None currently active
 
 ## Next Priority
-Monitor PR #7226 review feedback in next patrol cycle.
+Monitor PR #112084 review feedback in next patrol cycle.

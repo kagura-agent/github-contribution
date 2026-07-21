@@ -1,41 +1,43 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-20 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-21 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 682 |
+| Total PRs submitted (external) | 684 |
 | PRs merged | 223 |
-| PRs open | 9 |
-| PRs closed/rejected | 450 |
-| Acceptance rate | 33.1% |
-| Active repos (with open PRs) | 5 |
+| PRs open | 13 |
+| PRs closed/rejected | 448 |
+| Acceptance rate | 33.2% |
+| Active repos (with open PRs) | 6 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| agents-exist/story | 3 |
+| agents-exist/story | 4 |
+| openclaw/openclaw | 3 |
+| NVIDIA/NemoClaw | 2 |
 | generalaction/emdash | 2 |
-| openclaw/openclaw | 2 |
-| NVIDIA/NemoClaw | 1 |
 | anomalyco/opencode | 1 |
+| iamtouchskyer/memex | 1 |
 
-## Today (2026-07-20)
+## Today (2026-07-21)
 
 - New PRs (external): 2
 - Merged (external): 0
 - Closed without merge: 0
 
-_NVIDIA/NemoClaw#7226 (e2e retry fix) and anomalyco/opencode#37834 (EPIPE handling) submitted. 9 external PRs open across 5 repos._
+_NVIDIA/NemoClaw#7295 (sandbox hint interpolation) and openclaw/openclaw#112084 (canvas node selection tie-break) submitted. 13 external PRs open across 6 repos. Also merged 7 self-repo PRs (lottie-studio test coverage push)._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-21 | 2 | 0 | 0 | +2 |
 | 2026-07-20 | 2 | 0 | 0 | +2 |
 | 2026-07-19 | 1 | 4 | 1 | +0 |
 | 2026-07-18 | 1 | 0 | 0 | +1 |
