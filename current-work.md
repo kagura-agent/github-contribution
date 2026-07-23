@@ -1,16 +1,16 @@
 # Current Work
 
 ## Status
-Last workloop (2026-07-21 13:20) submitted PR #112084 to openclaw/openclaw.
+Last workloop (2026-07-23 19:25) submitted PR #7434 to NVIDIA/NemoClaw.
 
 ## Latest PR
-- **openclaw/openclaw#112084** — fix(agents): use lastSeenAtMs tie-break in canvas default-node selection
-- **Issue**: #112020
-- **Status**: PENDING (CI green, awaiting review)
-- **Diff**: 2 files, +39 lines (additive only, 5 lines in comparator + 18 test lines)
+- **NVIDIA/NemoClaw#7434** — fix(agents): merge separate --provider/-m flags into combined form
+- **Issue**: #7361
+- **Status**: PENDING (CI green, CodeRabbit reviewed, awaiting maintainer review)
+- **Diff**: 2 files, +201 lines (hermes-wrapper.py + new test file)
 
 ## Blockers
 - None currently active
 
 ## Next Priority
-Monitor PR #112084 review feedback in next patrol cycle.
+Monitor PR #7434 review feedback in next patrol cycle.

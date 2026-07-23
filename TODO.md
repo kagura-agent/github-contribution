@@ -1,5 +1,21 @@
 # PR Review Feedback TODO
 
+## NVIDIA/NemoClaw #7434 — fix(agents): merge separate --provider/-m flags into combined form
+
+**Status (2026-07-23 20:19)**: OPEN, MERGEABLE. CodeRabbit review with 2 actionable comments. No human review yet.
+
+### [P2] Handle end-of-options delimiter `--` in argv rewriting
+- **File**: `@agents/hermes/hermes-wrapper.py` line 473-475
+- **Issue**: Loop should stop rewriting when it encounters `--`, returning original argv immediately so all following tokens remain opaque/unchanged.
+- **Action**: Add `--` guard + integration test covering provider/model-looking arguments after `--`.
+
+### [P2] Move CI prerequisite assertion out of skipped suite
+- **File**: `@test/hermes-wrapper-provider-merge.test.ts` line 22-28
+- **Issue**: CI prerequisite assertion is inside the `describe.skipIf` suite so it never executes when skipped. Should assert before suite eval so CI fails properly when `canRun` is false.
+- **Action**: Restructure test file assertion ordering.
+
+---
+
 ## QwenLM/qwen-code #5957 — fix(core): subtract reserved output tokens from context window
 
 **Status (2026-06-28 22:30)**: CHANGES_REQUESTED Round 2 by wenshao (12:43 UTC). Critical design flaw identified.
