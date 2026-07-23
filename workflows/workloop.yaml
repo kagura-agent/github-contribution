@@ -212,9 +212,34 @@ nodes:
       '
     branches:
     - condition: 通过(open PR ≤ 3 且 repo 接受外部 PR)
-      next: study
+      next: stale_pr_check
     - condition: 不通过(open PR > 3 或 repo 不接受外部 PR)
       next: find_work
+  stale_pr_check:
+    task: '**Stale PR Early Detection — 在 study/plan 之前检查是否已有 PR，避免浪费 plan-review subagent。**
+
+      (2026-07-23 gradient: workloop #6852 NemoClaw#7226 stale-pr-fast-path 在 implement 阶段才触发，
+      但 plan-review subagent 已经白跑了一整轮。前置检查消除这个浪费。)
+
+      运行:
+      ```
+      bash tools/stale-pr-check.sh <owner/repo> <issue-number>
+      ```
+
+      **退出码判断:**
+      - Exit 10 → 我的 PR 已存在且 CI 绿 → **直接 fast-path 到 verify**，跳过 study+plan+implement
+      - Exit 11 → 我的 PR 存在但 CI 红 → 跳过 study+plan，进 implement fix mode
+      - Exit 0 → 无已有 PR → 正常流程，继续 study
+
+      汇报: 是否有已有 PR、CI 状态、走哪条分支。
+      '
+    branches:
+    - condition: Exit 10 — PR 存在且 CI 绿，fast-path
+      next: verify
+    - condition: Exit 11 — PR 存在但 CI 红，需修复
+      next: implement
+    - condition: Exit 0 — 无已有 PR，正常流程
+      next: study
   discover:
     task: '已有项目没有合适的 issue,去外面找新项目加入关注列表。
 
