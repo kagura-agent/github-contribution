@@ -1,44 +1,46 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-23 20:17 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-24 20:18 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 690 |
+| Total PRs submitted (external) | 692 |
 | PRs merged | 223 |
-| PRs open | 19 |
-| PRs closed/rejected | 448 |
+| PRs open | 20 |
+| PRs closed/rejected | 449 |
 | Acceptance rate | 33.2% |
-| Active repos (with open PRs) | 8 |
+| Active repos (with open PRs) | 9 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | NVIDIA/NemoClaw | 4 |
-| openclaw/openclaw | 4 |
 | agents-exist/story | 4 |
-| coleam00/Archon | 2 |
+| openclaw/openclaw | 3 |
+| coleam00/Archon | 3 |
 | generalaction/emdash | 2 |
+| modelcontextprotocol/inspector | 1 |
 | agentscope-ai/QwenPaw | 1 |
 | iamtouchskyer/memex | 1 |
 | anomalyco/opencode | 1 |
 
-## Today (2026-07-23)
+## Today (2026-07-24)
 
-- New PRs (external): 3
+- New PRs (external): 2
 - Merged (external): 0
 - Closed without merge: 0
 
-_NemoClaw#7434 (merge provider flags), NemoClaw#7422 (classify non-interactive provider errors), Archon#2255 (warn on unknown workflow YAML keys). 19 external PRs open across 8 repos. Internal: 13 merges across lottie-studio, abti, kagura-mail, cove._
+_inspector#1758 (fix flaky redaction assertion), Archon#2262 (remove double-quoted $node.output refs). 20 external PRs open across 9 repos. Internal: 11 merges across lottie-studio, abti, finance, kagura-mail._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-24 | 2 | 0 | 0 | +2 |
 | 2026-07-23 | 3 | 0 | 0 | +3 |
 | 2026-07-22 | 3 | 0 | 0 | +3 |
 | 2026-07-21 | 2 | 0 | 0 | +2 |
