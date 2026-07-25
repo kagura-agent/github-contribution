@@ -1,16 +1,16 @@
 # Current Work
 
 ## Status
-Last workloop (2026-07-23 19:25) submitted PR #7434 to NVIDIA/NemoClaw.
+Last workloop (2026-07-25 19:30) submitted PR #38843 to anomalyco/opencode.
 
 ## Latest PR
-- **NVIDIA/NemoClaw#7434** — fix(agents): merge separate --provider/-m flags into combined form
-- **Issue**: #7361
-- **Status**: PENDING (CI green, CodeRabbit reviewed, awaiting maintainer review)
-- **Diff**: 2 files, +201 lines (hermes-wrapper.py + new test file)
+- **anomalyco/opencode#38843** — fix(session): apply compaction.reserved to models without limit.input
+- **Issue**: #38835
+- **Status**: PENDING (CI green, awaiting maintainer review)
+- **Diff**: 2 files, +123 -1 lines (overflow.ts fix + new overflow.test.ts)
 
 ## Blockers
 - None currently active
 
 ## Next Priority
-Monitor PR #7434 review feedback in next patrol cycle.
+Monitor PR #38843 review feedback in next patrol cycle.

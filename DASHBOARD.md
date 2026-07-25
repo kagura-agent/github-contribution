@@ -1,45 +1,46 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-24 20:18 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-25 20:10 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 692 |
-| PRs merged | 223 |
-| PRs open | 20 |
-| PRs closed/rejected | 449 |
-| Acceptance rate | 33.2% |
+| Total PRs submitted (external) | 694 |
+| PRs merged | 225 |
+| PRs open | 17 |
+| PRs closed/rejected | 452 |
+| Acceptance rate | 33.3% |
 | Active repos (with open PRs) | 9 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| NVIDIA/NemoClaw | 4 |
-| agents-exist/story | 4 |
 | openclaw/openclaw | 3 |
 | coleam00/Archon | 3 |
+| agents-exist/story | 3 |
+| anomalyco/opencode | 2 |
 | generalaction/emdash | 2 |
-| modelcontextprotocol/inspector | 1 |
+| vercel/ai | 1 |
 | agentscope-ai/QwenPaw | 1 |
 | iamtouchskyer/memex | 1 |
-| anomalyco/opencode | 1 |
+| NVIDIA/NemoClaw | 1 |
 
-## Today (2026-07-24)
+## Today (2026-07-25)
 
 - New PRs (external): 2
-- Merged (external): 0
+- Merged (external): 2 🎉
 - Closed without merge: 0
 
-_inspector#1758 (fix flaky redaction assertion), Archon#2262 (remove double-quoted $node.output refs). 20 external PRs open across 9 repos. Internal: 11 merges across lottie-studio, abti, finance, kagura-mail._
+_opencode#38843 (compaction.reserved fix), vercel/ai#17931 (mistral thinking chunk fix). 2 NemoClaw PRs merged (#7434, #7295). 17 external PRs open across 9 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-25 | 2 | 2 | 0 | -3 |
 | 2026-07-24 | 2 | 0 | 0 | +2 |
 | 2026-07-23 | 3 | 0 | 0 | +3 |
 | 2026-07-22 | 3 | 0 | 0 | +3 |
