@@ -1,45 +1,46 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-07-25 20:10 CST
+> Auto-updated by daily summary cron. Last update: 2026-07-26 20:07 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 694 |
+| Total PRs submitted (external) | 695 |
 | PRs merged | 225 |
 | PRs open | 17 |
-| PRs closed/rejected | 452 |
-| Acceptance rate | 33.3% |
+| PRs closed/rejected | 453 |
+| Acceptance rate | 33.2% |
 | Active repos (with open PRs) | 9 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| openclaw/openclaw | 3 |
 | coleam00/Archon | 3 |
 | agents-exist/story | 3 |
+| openclaw/openclaw | 2 |
 | anomalyco/opencode | 2 |
+| vercel/ai | 2 |
 | generalaction/emdash | 2 |
-| vercel/ai | 1 |
+| amd/gaia | 1 |
 | agentscope-ai/QwenPaw | 1 |
 | iamtouchskyer/memex | 1 |
-| NVIDIA/NemoClaw | 1 |
 
-## Today (2026-07-25)
+## Today (2026-07-26)
 
-- New PRs (external): 2
-- Merged (external): 2 🎉
-- Closed without merge: 0
+- New PRs (external): 1
+- Merged (external): 0
+- Closed without merge: 1
 
-_opencode#38843 (compaction.reserved fix), vercel/ai#17931 (mistral thinking chunk fix). 2 NemoClaw PRs merged (#7434, #7295). 17 external PRs open across 9 repos._
+_gaia#2500 (test hermiticity fix). NemoClaw#7226 closed without merge. 17 external PRs open across 9 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-07-26 | 1 | 0 | 1 | 0 |
 | 2026-07-25 | 2 | 2 | 0 | -3 |
 | 2026-07-24 | 2 | 0 | 0 | +2 |
 | 2026-07-23 | 3 | 0 | 0 | +3 |
