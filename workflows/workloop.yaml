@@ -86,20 +86,73 @@ nodes:
   resolve_assigned:
     task: '**处理未兑现的 assigned issue — 硬 gate，不解决不放行。**
 
+
       被 assign 了就是承诺。承诺必须有结局，三选一：
 
-      **选项 A: 本轮做掉** → 直接进 study 节点，本轮目标就是这个 issue。 ⚠️ 如果 assign 已超过 7 天且选 A，必须当轮完成（不能再选 A 然后下轮又没做）。 连续 2 轮对同一个 issue 选 A
-      但没产出 PR → 第 3 轮强制选 B（unassign）。
 
-      **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won''t be able to work on this, please unassign me"）， 然后自己 unassign 或请 maintainer
-      取消。**静默放弃 = 最差选项。**
+      **⚠️ 首先检查持久化计数器（不能跳过）：**
 
-      **选项 C: 确认不需要 PR** → 仅限特殊情况（如 #4545 分析后认为不是 bug）。 必须在 issue 下有充分的分析评论，且等 reporter/maintainer 回复确认。 如果超过 7 天无回复 → 再 ping
-      一次或 unassign。不能无限期挂着。
+
+      ```
+
+      bash ~/.openclaw/workspace/tools/assigned-state.sh report <owner/repo#number>
+
+      ```
+
+
+      如果输出包含 ⛔ FORCED OPTION B → **禁止选 A，必须选 B（unassign）。**
+
+      这是硬性规则，连续 2 轮选 A 没产出 PR 就失去选 A 的资格。
+
+
+      **选项 A: 本轮做掉** → 直接进 study 节点，本轮目标就是这个 issue。
+
+      ⚠️ 选 A 前必须 increment 计数器：
+
+      ```
+
+      bash ~/.openclaw/workspace/tools/assigned-state.sh increment <owner/repo#number>
+
+      ```
+
+      如果 assign 已超过 7 天且选 A，必须当轮完成（不能再选 A 然后下轮又没做）。
+
+
+      **选项 B: 放弃** → 去 issue 下评论说明放弃原因（"I won''t be able to work on this, please unassign me"），
+
+      然后自己 unassign 或请 maintainer 取消。**静默放弃 = 最差选项。**
+
+      选 B 后清除计数器：
+
+      ```
+
+      bash ~/.openclaw/workspace/tools/assigned-state.sh remove <owner/repo#number>
+
+      ```
+
+
+      **选项 C: 确认不需要 PR** → 仅限特殊情况（如 #4545 分析后认为不是 bug）。
+
+      必须在 issue 下有充分的分析评论，且等 reporter/maintainer 回复确认。
+
+      如果超过 7 天无回复 → 再 ping 一次或 unassign。不能无限期挂着。
+
+      选 C 后清除计数器：
+
+      ```
+
+      bash ~/.openclaw/workspace/tools/assigned-state.sh remove <owner/repo#number>
+
+      ```
+
 
       **每个未兑现 issue 必须当场决定走哪个选项并执行。** 处理完一个后，检查是否还有下一个未兑现 issue。 全部处理完才能继续。
 
-      汇报每个 assigned issue 的处理结果和选择的选项。 '
+
+      **选项 A 完成后（PR 已提交）：** followup 脚本下次运行时检测到 issue fulfilled 会自动清除计数器。
+
+
+      汇报每个 assigned issue 的处理结果和选择的选项。'
     branches:
     - condition: 选了选项 A（本轮做掉）
       next: study
@@ -218,21 +271,14 @@ nodes:
   stale_pr_check:
     task: '**Stale PR Early Detection — 在 study/plan 之前检查是否已有 PR，避免浪费 plan-review subagent。**
 
-      (2026-07-23 gradient: workloop #6852 NemoClaw#7226 stale-pr-fast-path 在 implement 阶段才触发，
-      但 plan-review subagent 已经白跑了一整轮。前置检查消除这个浪费。)
+      (2026-07-23 gradient: workloop #6852 NemoClaw#7226 stale-pr-fast-path 在 implement 阶段才触发， 但 plan-review subagent 已经白跑了一整轮。前置检查消除这个浪费。)
 
-      运行:
-      ```
-      bash tools/stale-pr-check.sh <owner/repo> <issue-number>
-      ```
+      运行: ``` bash tools/stale-pr-check.sh <owner/repo> <issue-number> ```
 
-      **退出码判断:**
-      - Exit 10 → 我的 PR 已存在且 CI 绿 → **直接 fast-path 到 verify**，跳过 study+plan+implement
-      - Exit 11 → 我的 PR 存在但 CI 红 → 跳过 study+plan，进 implement fix mode
-      - Exit 0 → 无已有 PR → 正常流程，继续 study
+      **退出码判断:** - Exit 10 → 我的 PR 已存在且 CI 绿 → **直接 fast-path 到 verify**，跳过 study+plan+implement - Exit 11 → 我的 PR 存在但 CI
+      红 → 跳过 study+plan，进 implement fix mode - Exit 0 → 无已有 PR → 正常流程，继续 study
 
-      汇报: 是否有已有 PR、CI 状态、走哪条分支。
-      '
+      汇报: 是否有已有 PR、CI 状态、走哪条分支。 '
     branches:
     - condition: Exit 10 — PR 存在且 CI 绿，fast-path
       next: verify
