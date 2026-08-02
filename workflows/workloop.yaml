@@ -167,7 +167,28 @@ nodes:
     - condition: 反馈全部是 bot/non-actionable，无需改代码
       next: find_work
   find_work:
-    task: '运行 find_work 脚本获取可做的 issue 列表：
+    task: '**⚠️ Capacity Gate（不能跳过）：**
+
+      运行容量检查：
+
+      ```
+
+      ASSIGNED=$(gh search issues --assignee kagura-agent --state open --json number --jq "length")
+
+      OPEN_PRS=$(gh search prs --author kagura-agent --state open --json number --jq "length")
+
+      echo "Assigned: $ASSIGNED | Open PRs: $OPEN_PRS"
+
+      ```
+
+      **硬规则：** 如果 assigned > 2 且对应的 open PR 数量 < assigned - 1，
+      说明有大量已认领但未动手的 issue。**禁止认领新 issue，本轮结束。**
+
+      输出 capacity check 结果作为证据。通过后继续 ↓
+
+      ---
+
+      运行 find_work 脚本获取可做的 issue 列表：
 
 
       ```
