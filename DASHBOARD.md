@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-02 20:08 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-03 20:03 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -8,39 +8,39 @@
 | Metric | Value |
 |--------|-------|
 | Total PRs submitted (external) | 88 |
-| PRs merged | 27 |
-| PRs open | 15 |
-| PRs closed/rejected | 46 |
-| Acceptance rate | 37.0% |
-| Active repos (with open PRs) | 10 |
+| PRs merged | 28 |
+| PRs open | 13 |
+| PRs closed/rejected | 47 |
+| Acceptance rate | 37.3% |
+| Active repos (with open PRs) | 9 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | anomalyco/opencode | 3 |
-| coleam00/Archon | 3 |
+| coleam00/Archon | 2 |
 | generalaction/emdash | 2 |
 | agents-exist/story | 1 |
 | NVIDIA/NemoClaw | 1 |
 | vercel/ai | 1 |
 | agentscope-ai/QwenPaw | 1 |
-| iamtouchskyer/memex | 1 |
 | langwatch/langwatch | 1 |
 | multica-ai/multica | 1 |
 
-## Today (2026-08-02)
+## Today (2026-08-03)
 
-- New PRs (external): 1
-- Merged (external): 0
-- Closed without merge: 0
+- New PRs (external): 0
+- Merged (external): 1
+- Closed without merge: 1
 
-_langwatch/langwatch#6432 (billing endDate fix). 15 external PRs open across 10 repos._
+_Archon#2350 merged (CI fix). memex#177 closed. 13 external PRs open across 9 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-03 | 0 | 1 | 1 | -2 |
 | 2026-08-02 | 1 | 0 | 0 | -1 |
 | 2026-08-01 | 1 | 0 | 0 | -1 |
 | 2026-07-31 | 2 | 0 | 0 | +2 |
