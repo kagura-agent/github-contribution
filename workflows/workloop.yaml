@@ -519,6 +519,8 @@ nodes:
   fallback_offline:
     task: '网络/API 不可用,无法正常打工。转为离线有效工作:
 
+      **先保留失败证据（不能跳过）：**在进入本节点前，将失败命令、退出码和 stderr 摘要写入本轮 memory/项目笔记；若原始输出未保留，只能记录“发现不可用”，不得猜测网络、认证或限流根因，也不得把它当作 “NO VIABLE ISSUES”。
+
       1. **整理已有 PR**:读本地 git log,检查有没有未 push 的 commit
 
       2. **更新 wiki 笔记**:读 wiki/projects/ 下的笔记,补充遗漏的维护者模式、测试命令等
