@@ -1,45 +1,44 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-03 20:03 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-06 20:14 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 88 |
-| PRs merged | 28 |
-| PRs open | 13 |
-| PRs closed/rejected | 47 |
-| Acceptance rate | 37.3% |
-| Active repos (with open PRs) | 9 |
+| Total PRs submitted (external) | 719 |
+| PRs merged | 244 |
+| PRs open | 10 |
+| PRs closed/rejected | 465 |
+| Acceptance rate | 34.4% |
+| Active repos (with open PRs) | 7 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | anomalyco/opencode | 3 |
-| coleam00/Archon | 2 |
 | generalaction/emdash | 2 |
+| TencentCloud/TencentDB-Agent-Memory | 1 |
 | agents-exist/story | 1 |
-| NVIDIA/NemoClaw | 1 |
-| vercel/ai | 1 |
 | agentscope-ai/QwenPaw | 1 |
 | langwatch/langwatch | 1 |
-| multica-ai/multica | 1 |
+| vercel/ai | 1 |
 
-## Today (2026-08-03)
+## Today (2026-08-06)
 
 - New PRs (external): 0
-- Merged (external): 1
-- Closed without merge: 1
+- Merged (external): 0
+- Closed without merge: 0
 
-_Archon#2350 merged (CI fix). memex#177 closed. 13 external PRs open across 9 repos._
+_No external PR lifecycle events today. 10 external PRs remain open across 7 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-06 | 0 | 0 | 0 | 0 |
 | 2026-08-03 | 0 | 1 | 1 | -2 |
 | 2026-08-02 | 1 | 0 | 0 | -1 |
 | 2026-08-01 | 1 | 0 | 0 | -1 |
