@@ -198,7 +198,7 @@ nodes:
       ```
 
 
-      读脚本输出的 RECOMMENDED ISSUES 列表。
+      读脚本输出的 RECOMMENDED ISSUES 列表，并记录 FINDER_RESULT 和退出码。
 
 
       **脚本自动完成：**
@@ -223,9 +223,10 @@ nodes:
       - 选有 wiki 笔记的 repo 优先（已有知识积累效率更高）
 
 
-      **如果脚本输出 "NO VIABLE ISSUES"：**
+      **Finder contract：**
 
-      - 走 discover 分支，找新项目
+      - tracked scan 不可用、JSON feed 不可用或 JSON 无效时，脚本输出 `FINDER_RESULT=UNAVAILABLE` 并以退出码 2 结束；这不是空结果，走 fallback_offline 分支。
+      - 仅当有效的结构化空 feed 输出 "NO VIABLE ISSUES" 且退出码为 0 时，才走 discover 分支找新项目。
 
 
       **黑名单 repo（绝对不碰）：**
@@ -239,7 +240,9 @@ nodes:
     branches:
     - condition: 找到了合适的 issue
       next: pr_gate
-    - condition: 没有合适的 issue 可做
+    - condition: FINDER_RESULT=UNAVAILABLE 或退出码 2（tracked scan 不可用、JSON feed 不可用或 JSON 无效）
+      next: fallback_offline
+    - condition: 有效结构化空 feed 输出 "NO VIABLE ISSUES" / 没有合适的 issue 可做（退出码 0）
       next: discover
     - condition: gogetajob/gh 命令失败(网络、API 限流)
       next: fallback_offline
