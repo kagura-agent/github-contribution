@@ -16,6 +16,9 @@ nodes:
       这是整轮打工的基调,后续所有步骤都参照这个准则。
 
 
+      **恢复交接约定**：每次推进一个包含选择、外部状态或失败证据的节点时，使用 `flowforge next ... --result "<脱敏、≤2000 字的交接摘要>"`。摘要只写 issue/PR、关键命令或 artifact 路径和下一步边界；禁止写 token、个人数据或原始日志。恢复后先读注入的 handoff，再决定是否继续。
+
+
       **DNA Preflight**(不能跳过):
 
       `bash tools/dna-preflight.sh --context workloop --days 3`

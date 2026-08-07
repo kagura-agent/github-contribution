@@ -56,6 +56,10 @@
 
 **Followup 审计**：每轮 workloop followup 步骤会按 repo 聚合 open PR 数量。超限的 repo 自动触发存量管理（主动关闭 stale PR 或暂停新提交）。
 
+## FlowForge 恢复证据
+
+cron 中断后恢复 workloop 时，节点名和分支不足以证明此前选择了哪个 issue、依据是什么。每次完成有决策或外部证据的节点，推进 FlowForge 时都要附一条**脱敏、简短、可核验**的 `--result` 交接摘要：目标 issue/PR、关键命令或 artifact 路径、以及下一节点应遵守的边界即可。不要写 token、原始日志、个人数据或完整命令输出；原始证据留在项目笔记、memory 或专门 artifact。恢复节点必须先阅读该交接摘要，再决定是否重选或继续。
+
 ## Review 分诊：Bot vs 人类
 
 大量项目使用 AI review bot（CodeRabbit、cubic-dev-ai、chatgpt-codex-connector、claude 等）。这些 bot 的 review 和人类 maintainer 的 review 需要区别对待：
