@@ -1,24 +1,24 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-07 20:15 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-08 20:10 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 719 |
-| PRs merged | 244 |
-| PRs open | 10 |
-| PRs closed/rejected | 465 |
-| Acceptance rate | 34.4% |
+| Total PRs submitted (external) | 89 |
+| PRs merged | 33 |
+| PRs open | 9 |
+| PRs closed/rejected | 47 |
+| Acceptance rate | 41.3% |
 | Active repos (with open PRs) | 7 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
-| anomalyco/opencode | 3 |
+| anomalyco/opencode | 2 |
 | generalaction/emdash | 2 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | agents-exist/story | 1 |
@@ -26,18 +26,19 @@
 | langwatch/langwatch | 1 |
 | vercel/ai | 1 |
 
-## Today (2026-08-07)
+## Today (2026-08-08)
 
 - New PRs (external): 0
 - Merged (external): 0
 - Closed without merge: 0
 
-_No external PR lifecycle events today. 10 external PRs remain open across 7 repos._
+_No external PR lifecycle events today. 9 external PRs remain open across 7 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-08 | 0 | 0 | 0 | -1 |
 | 2026-08-07 | 0 | 0 | 0 | 0 |
 | 2026-08-06 | 0 | 0 | 0 | 0 |
 | 2026-08-03 | 0 | 1 | 1 | -2 |
