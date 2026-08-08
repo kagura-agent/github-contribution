@@ -31,7 +31,8 @@ nodes:
 
       ```
 
-      bash ~/.openclaw/workspace/tools/workloop-followup.sh 2>&1
+      bash ~/.openclaw/workspace/github-contribution/scripts/run-workloop-step.sh \
+        --label followup -- bash ~/.openclaw/workspace/tools/workloop-followup.sh
 
       ```
 
@@ -196,7 +197,8 @@ nodes:
 
       ```
 
-      bash ~/.openclaw/workspace/tools/workloop-find-issue.sh 2>&1
+      bash ~/.openclaw/workspace/github-contribution/scripts/run-workloop-step.sh \
+        --label find-work -- bash ~/.openclaw/workspace/tools/workloop-find-issue.sh
 
       ```
 
@@ -525,7 +527,7 @@ nodes:
   fallback_offline:
     task: '网络/API 不可用,无法正常打工。转为离线有效工作:
 
-      **先保留失败证据（不能跳过）：**在进入本节点前，将失败命令、退出码和 stderr 摘要写入本轮 memory/项目笔记；若原始输出未保留，只能记录“发现不可用”，不得猜测网络、认证或限流根因，也不得把它当作 “NO VIABLE ISSUES”。
+      **先保留失败证据（不能跳过）：**followup/find_work 必须通过 `scripts/run-workloop-step.sh` 执行；当它输出 `WORKLOOP_EVIDENCE_ARTIFACT=<path>` 时，在交接摘要和 memory 中引用该 artifact。它包含脱敏后的命令、退出码与 stdout/stderr 尾部；不得把“不可用”归因为网络、认证或限流，也不得等同于 “NO VIABLE ISSUES”。其他失败命令也要以同等字段记录。
 
       1. **整理已有 PR**:读本地 git log,检查有没有未 push 的 commit
 
