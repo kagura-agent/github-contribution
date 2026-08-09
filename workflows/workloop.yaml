@@ -208,9 +208,11 @@ nodes:
 
       **脚本自动完成：**
 
-      - gogetajob scan --all（扫描所有 tracked repos）
+      - `gogetajob scan --all --skip-recent 12`（跳过近 12 小时已扫 repo，避免每轮重扫）
 
-      - gogetajob feed（按优先级排序）
+      - 每个 repo 输出 `scan-metric`（结果、耗时、heap）；超时证据的 stdout tail 可定位最后完成/卡住的 repo，但不单凭此归因
+
+      - 成功扫描后从本地 gogetajob DB 写入带 UTC 时间戳的结构化 feed cache；扫描不可用时只可使用 ≤6 小时的 cache，过期/缺失仍是 `FINDER_RESULT=UNAVAILABLE`
 
       - 批量 gate 过滤（state、已交互、open PR 去重、closed PR 去重、竞争 PR、per-repo 上限）
 
@@ -230,8 +232,9 @@ nodes:
 
       **Finder contract：**
 
-      - tracked scan 不可用、JSON feed 不可用或 JSON 无效时，脚本输出 `FINDER_RESULT=UNAVAILABLE` 并以退出码 2 结束；这不是空结果，走 fallback_offline 分支。
-      - 仅当有效的结构化空 feed 输出 "NO VIABLE ISSUES" 且退出码为 0 时，才走 discover 分支找新项目。
+      - 每次先执行有界的增量 scan；成功时更新结构化 cache。若 scan 不可用但存在 ≤6 小时、格式有效的 cache，脚本输出 `FINDER_SCAN_FALLBACK=CACHE` 并继续按 cache 过滤；汇报 cache age，不能把它说成实时全量扫描。
+      - tracked scan 与 cache 都不可用、或 cache 无效/过期时，脚本输出 `FINDER_RESULT=UNAVAILABLE` 并以退出码 2 结束；这不是空结果，走 fallback_offline 分支。
+      - 仅当有效的结构化 feed（实时或 cache）输出 "NO VIABLE ISSUES" 且退出码为 0 时，才走 discover 分支找新项目。
 
 
       **黑名单 repo（绝对不碰）：**
