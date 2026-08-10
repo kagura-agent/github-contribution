@@ -321,19 +321,21 @@ nodes:
   discover:
     task: '已有项目没有合适的 issue,去外面找新项目加入关注列表。
 
+      **策略：广泛发现，窄而深地承诺。** 发现范围不能只限 `ai-agent`：优先覆盖 agent runtime、评测/可观测性、agent 协作基础设施、AI developer tooling；只把与 self-evolving agent 主线对齐、维护者活跃、且值得长期积累的 2–3 个项目纳入关注。不能把一次受限查询的空结果表述为“开源社区没有机会”。
+
       1. 运行 `gogetajob discover --language TypeScript --min-stars 100 --active-days 14 --limit 10 --topic ai-agent`
 
       2. 再运行 `gogetajob discover --language Python --min-stars 100 --active-days 14 --limit 10 --topic agent`
 
-      3. 对照 guide.md 的选题原则,筛选对齐方向的项目
+      3. 若上述结果不合适，扩展查询到至少两个相邻方向（例如 `llm-observability`、`ai-evaluation`、`developer-tools`、`workflow-automation`），可结合 GitHub Trending；记录每个查询边界，不能因首轮结果为空而停止。
 
-      4. 找到合适的 → `gogetajob scan owner/repo` 加入关注列表
+      4. 对照 guide.md 的选题原则,筛选对齐方向的项目
 
-      5. 也可以看 GitHub Trending
+      5. 找到合适的 → `gogetajob scan owner/repo` 加入关注列表
 
       **注意:discover 只负责找新项目并加入关注列表,不负责选 issue。选 issue 是 find_work 的事。**
 
-      汇报发现了什么新项目,加入了哪些。'
+      汇报搜索范围、发现了什么新项目、加入了哪些；没有结果时说明已覆盖的方向。'
     branches:
     - condition: 加入了新项目
       next: find_work
