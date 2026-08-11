@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Run a workloop data-gathering step, preserve its console output, and persist
-# bounded evidence when the command fails or reports an unavailable dependency.
+# bounded evidence when the command fails, reports an unavailable dependency,
+# or the wrapper is interrupted.
 set -uo pipefail
 
 usage() {
@@ -31,37 +32,42 @@ evidence_dir="$repo_root/offline/evidence/$(date +%F)"
 mkdir -p "$evidence_dir"
 stdout_file=$(mktemp "${TMPDIR:-/tmp}/workloop-${label}.stdout.XXXXXX")
 stderr_file=$(mktemp "${TMPDIR:-/tmp}/workloop-${label}.stderr.XXXXXX")
+child_pid=""
 cleanup() { rm -f "$stdout_file" "$stderr_file"; }
 trap cleanup EXIT
 
-"$@" >"$stdout_file" 2>"$stderr_file"
-status=$?
-cat "$stdout_file"
-cat "$stderr_file" >&2
+redact() {
+  sed -E \
+    -e 's/(token|authorization|password|secret)[=:][^[:space:]]+/\1=[REDACTED]/Ig' \
+    -e 's/ghp_[[:alnum:]_]+/[REDACTED_GITHUB_TOKEN]/g' \
+    -e 's/github_pat_[[:alnum:]_]+/[REDACTED_GITHUB_TOKEN]/g'
+}
 
-# Some legacy scripts keep running after a failed internal query. Treat their
-# explicit markers as unavailable evidence, without changing their exit code.
-marker='FINDER_RESULT=UNAVAILABLE|scan_unavailable|gh search (issues|prs) failed|JSON feed unavailable'
-if [ "$status" -ne 0 ] || grep -Eqi "$marker" "$stdout_file" "$stderr_file"; then
+write_artifact() {
+  local kind="$1"
+  local status="$2"
+  local signal="${3:-}"
+  local timestamp artifact command_line
+
   timestamp=$(date +%Y%m%dT%H%M%S%z)
   artifact="$evidence_dir/${timestamp}-${label}.md"
-  command_line=$(printf '%q ' "$@")
-  redact() {
-    sed -E \
-      -e 's/(token|authorization|password|secret)[=:][^[:space:]]+/\1=[REDACTED]/Ig' \
-      -e 's/ghp_[[:alnum:]_]+/[REDACTED_GITHUB_TOKEN]/g' \
-      -e 's/github_pat_[[:alnum:]_]+/[REDACTED_GITHUB_TOKEN]/g'
-  }
+  command_line=$(printf '%q ' "${command[@]}")
   {
-    echo "# Workloop ${label} unavailable evidence"
+    echo "# Workloop ${label} ${kind} evidence"
     echo
     echo "- Timestamp: $(date -Is)"
-    echo "- Command: \`${command_line% }\`"
+    printf '%s' "- Command: \`${command_line% }\`" | redact
+    echo
     echo "- Exit status: $status"
-    if grep -Eqi "$marker" "$stdout_file" "$stderr_file"; then
-      echo "- Explicit unavailable marker: yes"
-    else
-      echo "- Explicit unavailable marker: no"
+    if [ -n "$signal" ]; then
+      echo "- Signal: $signal"
+    fi
+    if [ "$kind" = "unavailable" ]; then
+      if grep -Eqi "$marker" "$stdout_file" "$stderr_file"; then
+        echo "- Explicit unavailable marker: yes"
+      else
+        echo "- Explicit unavailable marker: no"
+      fi
     fi
     echo
     echo "## stdout tail (40 lines)"
@@ -75,6 +81,37 @@ if [ "$status" -ne 0 ] || grep -Eqi "$marker" "$stdout_file" "$stderr_file"; the
     echo '```'
   } >"$artifact"
   echo "WORKLOOP_EVIDENCE_ARTIFACT=$artifact" >&2
+}
+
+# Keep the command in the background so a TERM delivered to this wrapper can
+# capture its partial output, stop the child, and still return TERM's 128+15
+# status to the caller.
+command=("$@")
+marker='FINDER_RESULT=UNAVAILABLE|scan_unavailable|gh search (issues|prs) failed|JSON feed unavailable'
+interrupted() {
+  local signal="$1"
+  trap - TERM INT
+  if [ -n "$child_pid" ]; then
+    kill -TERM "$child_pid" 2>/dev/null || true
+    wait "$child_pid" 2>/dev/null || true
+  fi
+  write_artifact "interruption" 143 "$signal"
+  exit 143
+}
+trap 'interrupted TERM' TERM
+
+"${command[@]}" >"$stdout_file" 2>"$stderr_file" &
+child_pid=$!
+wait "$child_pid"
+status=$?
+child_pid=""
+cat "$stdout_file"
+cat "$stderr_file" >&2
+
+# Some legacy scripts keep running after a failed internal query. Treat their
+# explicit markers as unavailable evidence, without changing their exit code.
+if [ "$status" -ne 0 ] || grep -Eqi "$marker" "$stdout_file" "$stderr_file"; then
+  write_artifact "unavailable" "$status"
 fi
 
 exit "$status"
