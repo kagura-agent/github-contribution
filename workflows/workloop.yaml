@@ -376,6 +376,29 @@ nodes:
     - condition: issue 可做,计划明确
       next: plan
     - condition: issue 不合适(上游问题/竞争PR/太复杂),需要重选
+      next: reject_and_return
+  reject_and_return:
+    task: '**记录拒绝原因并退回选题。**
+
+      Study 阶段判定 issue 不合适时，必须记录拒绝原因到 finder 的 rejection cache，
+      防止下次 find_work 又选中同一个未变化的 issue。
+
+      1. 记录拒绝：
+      ```
+      bash ~/.openclaw/workspace/tools/finder-reject.sh add <owner/repo#number> "<简短拒绝原因>"
+      ```
+      拒绝原因示例：
+      - "maintainer requires internal contract decision"
+      - "upstream dependency, not fixable in this repo"
+      - "component scheduled for deprecation"
+      - "requires design proposal before implementation"
+
+      2. 汇报拒绝原因和问题在 finder 中的 key。
+
+      拒绝记录会在 finder Gate 7 自动排除。当 issue 有新活动时，rejection 自动过期（finder-reject.sh check 检测到 updated_at 变化会自动清除）。
+      '
+    branches:
+    - condition: 已记录拒绝，返回选题
       next: find_work
   implement:
     task: "按照 plan 阶段的计划实现(参照变更清单逐项执行):\n**⚡ Stale PR Recovery（implement 前第一步）**：\n`bash tools/stale-pr-check.sh <owner/repo>\
