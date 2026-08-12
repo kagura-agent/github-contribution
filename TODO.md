@@ -1,5 +1,23 @@
 # PR Review Feedback TODO
 
+## langwatch/langwatch #6432 — satisfy reviewer’s duplicate-reactivation coverage requirement
+
+**Status (2026-08-09 22:10 CST)**: `drewdrewthis` review remains `CHANGES_REQUESTED`; Kagura’s 2026-08-04 replies have no subsequent reviewer response. The requested fix is a code/test follow-up, not suitable for the patrol run.
+
+**Action**: In the next workloop, read the linked inline review and add behavior-level coverage for duplicate/already-active webhook delivery, proving `endDate` is cleared while `startDate` is omitted; then run the focused billing tests and update the PR.
+
+---
+
+
+## kagura-agent/NemoClaw — release-target label workflow has no usable release tag
+
+**Observed (2026-08-09 22:10 CST)**: Scheduled workflow “Automation / Label Merged PR Release Target” failed in runs #107, #108, and #109. Run #109 logs explicitly report `No strict semver release tags were found` from `loadReleaseTags()`.
+
+**Action**: Decide whether the repository should have an annotated strict `vMAJOR.MINOR.PATCH` release tag or whether the workflow must gracefully skip repositories with no releases; implement and test the chosen behavior in a dedicated workloop.
+
+---
+
+
 ## NVIDIA/NemoClaw #7434 — fix(agents): merge separate --provider/-m flags into combined form
 
 **Status (2026-07-23 20:19)**: OPEN, MERGEABLE. CodeRabbit review with 2 actionable comments. No human review yet.

@@ -382,9 +382,8 @@ nodes:
       \ <issue-number>`\n退出 10 → 我的 PR 已存在且 CI 绿 → **直接走 Branch 3 fast-path**，不重做实现。\n退出 11 → 我的 PR 存在但 CI 红 → fix mode，检查\
       \ CI 失败原因并修复，不从头实现。\n退出 0 → 无已有 PR → 继续正常实现流程。\n（解决 workloop 实例卡住后恢复时重复实现的问题。stale-workloop-recovery gradient 2026-06-20。）\n\
       \n**⚠️ 竞争 PR 复查（stale-pr-check exit 0 时必做）**：\n`bash tools/competing-pr-check.sh <owner/repo> <issue-number>`\n退出 1\
-      \ → 已被抢先，退回 find_work，不浪费实现时间。\n（高星 repo issue 从 study→implement 可能经过数小时，期间经常被竞争 PR 抢先。hermes#49307 教训。）\n\n0. **分工决策**:\n\
-      \   - 代码实现用 acpx exec 同步调 Claude Code:\n     `cd <repo> && /home/kagura/repo/openclaw/node_modules/.bin/acpx --approve-all\
-      \ claude exec \"task\"`\n   - task 必须包含 Claude Code 看不到的上下文:\n     a. 相关的 issue 讨论和 reviewer 反馈\n     b. 类似 bug 的已有修复(可作为参考模式)\n\
+      \ → 已被抢先，退回 find_work，不浪费实现时间。\n（高星 repo issue 从 study→implement 可能经过数小时，期间经常被竞争 PR 抢先。hermes#49307 教训。）\n\n0. **Claude Code CLI 分工**:\n\
+      \   - 所有代码实现必须在目标 repo/worktree 内以 Claude Code CLI 同步执行，且不得直接手写实现:\n     `cd <repo> && claude --print --permission-mode bypassPermissions \"<task>\"`\n   - CLI 必须同步等待最终输出；记录退出码、最终 stdout 和本地验证证据后才能推进 workflow\n   - CLI task 必须指定目标 worktree、范围、测试命令和边界；若失败或超时，重新发起聚焦的 CLI task 或报告具体 blocker，不得改用其他 harness 或手写实现\n   - task 必须包含 Claude Code 看不到的上下文:\n     a. 相关的 issue 讨论和 reviewer 反馈\n     b. 类似 bug 的已有修复(可作为参考模式)\n\
       \     c. 项目架构和代码位置的关键信息\n     d. maintainer 偏好(从 wiki 读)\n   - **task 开头必须加 surgical constraints**:\n     CONSTRAINTS:\
       \ 1) Surgical changes only - every changed line must trace to the issue. Do not improve adjacent code/comments/formatting.\
       \ Preserve original code structure, variable names, and comments exactly as-is unless the fix requires changing them.\
@@ -393,14 +392,13 @@ nodes:
       \ smallest possible diff that correctly fixes the issue.\n   - **task 末尾必须加验证指令和边界约束**:\n     \"Before committing: 1)\
       \ grep for all test files that import/mock the interfaces you changed, update their mocks. 2) Run the project's test/lint\
       \ commands. 3) git diff --stat to confirm no files were missed.\n     BOUNDARY: Only commit locally. Do NOT push, do\
-      \ NOT create PRs, do NOT run gh pr commands. Push and PR creation happen in the submit node.\"\n   - 一行级别的简单修复可以自己做,不需要调\
-      \ Claude Code\n   - **效率 tip**:大文件(1000+ 行)的简单修复(< 20 行改动),手动改比 acpx exec 更高效\n   - acpx exec 超时默认 300 秒,大文件可能不够,评估后决定手动还是调\
-      \ agent\n1. acpx exec 是同步的 - 等它跑完结果直接在 stdout 里\n2. Claude Code 完成后:**机械验证**(不能跳过):\n     运行 `bash ~/.openclaw/workspace/flowforge/scripts/verify-claims.sh\
+      \ NOT create PRs, do NOT run gh pr commands. Push and PR creation happen in the submit node.\"\n   - 无论改动大小，都不得直接手写\
+      \ 代码；必须委托 Claude Code CLI\n   - 不得因任务大小或 CLI 超时转为手写；应重新发起聚焦 CLI task 或报告阻塞\n1. **必须取得同步 CLI 的完成结果**：确认 Claude Code CLI 已完成实现、测试与本地提交，并检查退出码与最终 stdout 后，才能进行后续机械验证\n2. Claude Code 完成后:**机械验证**(不能跳过):\n     运行 `bash ~/.openclaw/workspace/flowforge/scripts/verify-claims.sh\
       \ <repo-dir> [expected-files...]`\n     expected-files = plan 阶段列出的变更文件。脚本检查:文件确实被修改(git diff)、没有遗留 unstaged changes、修改文件非空、无\
       \ conflict markers。\n     脚本返回 FAILED → 回去修,不要继续\n3. Review commit 改动是否正确\n4. 确保代码风格符合项目规范\n5. **push 前自检**(不能跳过):\n\
       \   a. `git diff --stat` 看全局影响\n   b. 改了接口/类型?→ grep 所有 import 这个接口的文件,确认 mock/stub 同步了\n   c. 项目有测试命令?→ 跑。没有本地环境?→\
       \ 至少 grep 验证 mock 完整性\n\n**\U0001F6A9 Red Flags - 如果出现以下症状,你在赶工不是在实现:**\n- 跳过了 plan 里的某个变更项但没说原因 → 你忘了或在回避\n- push 前没跑测试就说\"\
-      应该没问题\" → 你在猜不是在验证\n- 改了接口但没 grep 相关 mock/stub 文件 → CI 会告诉你\n- acpx exec 的 task 里没包含上下文(issue 讨论/维护者偏好)→ Claude Code\
+      应该没问题\" → 你在猜不是在验证\n- 改了接口但没 grep 相关 mock/stub 文件 → CI 会告诉你\n- CLI task 里没包含上下文(issue 讨论/维护者偏好)→ Claude Code\
       \ 会猜着做\n汇报实现结果和测试状态。\n   d. **Over-editing check**: 逐行审查 diff - 每一行改动都必须 trace back to the issue。如果发现改了不相关的变量名、格式、注释、import\
       \ 顺序,revert 那些改动。\n"
     branches:
@@ -411,17 +409,17 @@ nodes:
     - condition: Stale PR fast-path — 我的 PR 已存在且 CI 绿，跳过实现
       next: pre_push_audit
   implement_manual:
-    task: 'acpx exec 失败了,手动完成实现:
+    task: 'Claude Code CLI 恢复路径（禁止手写实现）:
 
-      1. 检查 acpx 已经做了什么(git diff / git log)
+      1. 检查上一次 Claude Code CLI 的退出码、最终 stdout、当前 repository diff 和 git log。
 
-      2. 如果部分完成 → 手动补完剩余部分
+      2. 在同一目标 repo/worktree 重新发起聚焦的 `claude --print --permission-mode bypassPermissions "<task>"`，让 Claude Code 完成剩余工作。
 
-      3. 如果完全失败 → 从头手动实现(参照 study 阶段的计划)
+      3. 若 CLI 返回非零或超时，报告具体 CLI blocker；不得直接手写实现，也不得以其他 harness 作为 fallback。
 
-      4. 跑测试确认通过
+      4. Claude Code CLI 成功完成后，运行 plan 与 implement 阶段要求的测试并确认通过。
 
-      汇报实现结果。
+      汇报 CLI 的退出状态、最终结果、测试结果或具体 blocker。
 
       '
     next: submit

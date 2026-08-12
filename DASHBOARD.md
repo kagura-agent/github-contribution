@@ -1,42 +1,43 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-11 20:17 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-12 20:10 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 719 |
-| PRs merged | 244 |
-| PRs open | 6 |
-| PRs closed/rejected | 469 |
-| Acceptance rate | 34.2% |
-| Active repos (with open PRs) | 6 |
+| Total PRs submitted (external) | 720 |
+| PRs merged | 245 |
+| PRs open | 5 |
+| PRs closed/rejected | 470 |
+| Acceptance rate | 34.3% |
+| Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
+| alpic-ai/skybridge | 1 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | agents-exist/story | 1 |
 | agentscope-ai/QwenPaw | 1 |
-| anomalyco/opencode | 1 |
 | langwatch/langwatch | 1 |
-| vercel/ai | 1 |
 
-## Today (2026-08-11)
+## Today (2026-08-12)
 
-- New PRs (external): 0
+- New PRs (external): 1 — alpic-ai/skybridge#1053 (feat(devtools): add inspect panel toggle)
 - Merged (external): 0
 - Closed without merge: 0
+- Corrections: vercel/ai#10093 was already merged (2025-11-10), moved from open→merged; anomalyco/opencode#817 no longer resolvable (deleted), moved to closed
 
-_No external PR lifecycle events today. 6 external PRs remain open across 6 repos._
+_1 new external PR today. 5 external PRs remain open across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-12 | 1 | 0 | 0 | +1 |
 | 2026-08-11 | 0 | 0 | 0 | -2 |
 | 2026-08-10 | 0 | 0 | 0 | -1 |
 | 2026-08-09 | 0 | 0 | 0 | 0 |
