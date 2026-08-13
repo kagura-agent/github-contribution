@@ -10,6 +10,17 @@
 
 ---
 
+## [System] finder ignores blocklist → blocklisted repos starve the feed
+
+**Observed (2026-08-13 16:30 CST)**: `workloop-find-issue.sh` 的 7 个 gate 不检查 `gogetajob blocklist`。blocklisted 高⭐ repo（openclaw 384K / hermes 200K / opencode 189K）持续占据 feed 前列，`MAX_CHECK=15` + 3 survivor 提前 stop，饿死 P3 新项目（本轮刚加入的 lmnr/pipelex 因 `--skip-recent 12` 也未进 feed）。结果：find_work 反复推荐 blocklisted openclaw 的 3 个 issue（#114081 竞争 PR / #114084 not-repro-on-main / #114049 设计阶段），造成 find_work→discover 多轮循环。
+
+**Action**:
+1. 在 `workloop-find-issue.sh` 的 gate 列表加 blocklist 检查（命中 `gogetajob blocklist` 即跳过该 repo）。
+2. 调和 guide.md P1 表（仍列 openclaw 为 P1）与 blocklist（openclaw 已 blocklisted「8 consecutive weeks of violations, high rejection rate, bot-reviewed only」）的矛盾——需 Luna 确认是否降级 openclaw。
+3. 顺带核查 `gogetajob discover --topic` 参数疑似不生效（返回泛 help-wanted repo 而非 topic 过滤结果，`--keywords` 才有效）。
+
+---
+
 ## langwatch/langwatch #6432 — satisfy reviewer’s duplicate-reactivation coverage requirement
 
 **Status (2026-08-09 22:10 CST)**: `drewdrewthis` review remains `CHANGES_REQUESTED`; Kagura’s 2026-08-04 replies have no subsequent reviewer response. The requested fix is a code/test follow-up, not suitable for the patrol run.
