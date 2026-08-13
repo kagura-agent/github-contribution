@@ -543,7 +543,7 @@ nodes:
       \ 每轮打工必须至少写 1 条 gradient 到 beliefs-candidates.md,哪怕很短。\n这不是可选的反思--是管线的输入源。没有输入,beliefs 管线永远空转。\n\n问自己:\n- 这轮哪里卡了?→ 写下来\n\
       - 什么方法有效?→ 写下来\n- 维护者的反馈教了我什么?→ 写下来\n- 选题/工具/流程有什么可以改进?→ 写下来\n\n**使用 add-gradient.sh 写入**(统一入口,自动去重 + JSONL 日志):\n```\n\
       bash ~/.openclaw/workspace/tools/add-gradient.sh \\\n  --gradient '<具体的行为级教训>' \\\n  --pattern '<pattern-name>' \\\n\
-      \  --source workloop \\\n  --trigger '<什么时候会触发>' \\\n  --fix '<下次怎么做不同>'\n```\n\n**⛔ 如果你觉得\"这轮没什么好写的\"--这本身就是一个 gradient:你在合理化跳过。写下来。**\n\
+      \  --source workloop \\\n  --trigger '<什么时候会触发>' \\\n  --fix '<下次怎么做不同>'\n```\n\n**去重/递增行为**: add-gradient.sh 对同 pattern 硬去重——已存在时默认拒绝(exit 1)。同一教训复发 → 加 `--bump`(递增第N次);确有不同教训复用同 pattern → 加 `--force`。\n\n**⛔ 如果你觉得\"这轮没什么好写的\"--这本身就是一个 gradient:你在合理化跳过。写下来。**\n\
       \n**工具检查**:\n- gogetajob、gh、flowforge 等有没有问题?\n- 有 bug → 去工具 repo 提 issue 或自己修\n\n把反思结果记到 memory/YYYY-MM-DD.md。\n\n\
       **第三步:更新贡献准则和工作流**(飞轮闭环)\n回顾 ~/.openclaw/workspace/wiki/github-contribution/guide.md:\n- 这轮贡献有没有新的选题认知?(比如某类项目 merge\
       \ rate 特别低)\n- 发现了新的有效渠道?\n- \"服务到底\"或\"持续扩张\"有边界情况需要细化?\n如果有 → 更新 guide.md\n再回顾 workloop.yaml 本身:流程有没有卡的地方、多余的步骤、缺失的检查?\n\
@@ -708,7 +708,7 @@ nodes:
     task: "**梯度提取验证门**(结构性强制,不可跳过)\n\n检查 beliefs-candidates.md 在本轮是否被修改:\n```\ngit -C ~/.openclaw/workspace diff HEAD -- beliefs-candidates.md\
       \ | head -20\n```\n\n如果有 diff(新增了 gradient 条目)→ 通过,继续。\n如果没有 diff → **你跳过了 reflect 里的梯度提取步骤。现在补写。**\n\n**⚠️ 必须使用 add-gradient.sh\
       \ 写入**(统一入口,自动去重 + JSONL 日志):\n```\nbash ~/.openclaw/workspace/tools/add-gradient.sh \\\n  --gradient \"具体的行为级教训\" \\\
-      \n  --pattern \"pattern-name\" \\\n  --source workloop \\\n  --trigger \"什么时候会触发这个问题\" \\\n  --fix \"下次怎么做不同\"\n```\n\
+      \n  --pattern \"pattern-name\" \\\n  --source workloop \\\n  --trigger \"什么时候会触发这个问题\" \\\n  --fix \"下次怎么做不同\"\n```\n\n**去重/递增行为**: 同 pattern 已存在时默认拒绝(exit 1)。同一教训复发 → 加 `--bump`(递增第N次);确有不同教训复用同 pattern → 加 `--force`。\n\
       \n问自己(按优先级):\n1. 这轮哪里卡了?什么假设是错的?\n2. 什么方法有效?可以复用吗?\n3. 选题/工具/沟通有什么改进空间?\n4. 真的什么都没学到?那\"为什么没学到\"本身就是一个 gradient。\n\n\
       写完后 commit:\n```\ncd ~/.openclaw/workspace && git add beliefs-candidates.md && git commit -m \"gradient: <标题>\"\n```\n\
       \n**验证管线健康**(可选,推荐每天第一轮运行一次):\n```\nbash ~/.openclaw/workspace/tools/gradient-stats.sh\n```\n"
