@@ -1,10 +1,12 @@
 # PR Review Feedback TODO
 
-## [System] camel-ai/oasis (~198MB) scan timeout blocks find_work
+## [System] slow-repo scan timeout blocks find_work (multi-repo, structural)
 
-**Observed (2026-08-13)**: `gogetajob scan --all` times out (`status=124`) on camel-ai/oasis, making `FINDER_RESULT=UNAVAILABLE` and forcing fallback_offline for the whole round.
+**Observed**: `gogetajob scan --all` hard-times out (`status=124`) on a single slow repo and forces `FINDER_RESULT=UNAVAILABLE` → fallback_offline for the whole round. Recurring across repos:
+- 2026-08-13 (AM): camel-ai/oasis (~198MB, near 200MB threshold, guide rule #20)
+- 2026-08-13 (PM): langwatch/langwatch
 
-**Action**: Either (a) add camel-ai/oasis to a scan skip-list / exclude set so it stops blocking find_work, or (b) make the scan wrapper skip slow repos gracefully instead of hard-timeout. Repo size ~198MB (near 200MB threshold, guide rule #20) is the likely cause. Wiki note: `wiki/projects/oasis.md`.
+**Action**: Make the scan wrapper skip/tolerate slow repos instead of hard-timeout (per-repo timeout + continue), or add a skip-list for known-slow repos. This is the structural fix behind DNA recidivism `find-issue-oom-fallback` / `finder-unavailable-evidence-boundary`.
 
 ---
 
