@@ -1,42 +1,43 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-12 20:10 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-13 20:20 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 720 |
+| Total PRs submitted (external) | 721 |
 | PRs merged | 245 |
 | PRs open | 5 |
-| PRs closed/rejected | 470 |
-| Acceptance rate | 34.3% |
+| PRs closed/rejected | 471 |
+| Acceptance rate | 34.2% |
 | Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
+| jackwener/OpenCLI | 1 |
 | alpic-ai/skybridge | 1 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | agents-exist/story | 1 |
-| agentscope-ai/QwenPaw | 1 |
 | langwatch/langwatch | 1 |
 
-## Today (2026-08-12)
+## Today (2026-08-13)
 
-- New PRs (external): 1 — alpic-ai/skybridge#1053 (feat(devtools): add inspect panel toggle)
-- Merged (external): 0
+- New PRs (external): 1 — jackwener/OpenCLI#2282 (fix(extension): prevent silent 431 wedge from localhost cookie overflow, fixes #2278)
+- Merged (external): 1 — agentscope-ai/QwenPaw#6331 (chore(website): declare Node 22 requirement)
 - Closed without merge: 0
-- Corrections: vercel/ai#10093 was already merged (2025-11-10), moved from open→merged; anomalyco/opencode#817 no longer resolvable (deleted), moved to closed
+- Corrections: QwenPaw#6331 (open→merged, merged 08-13T03:17Z); index reconciliation keeps merged at 245 while closed-non-merge rose to 471
 
-_1 new external PR today. 5 external PRs remain open across 5 repos._
+_1 new external PR + 1 merge today. 5 external PRs remain open across 5 repos._
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-13 | 1 | 1 | 0 | 0 |
 | 2026-08-12 | 1 | 0 | 0 | +1 |
 | 2026-08-11 | 0 | 0 | 0 | -2 |
 | 2026-08-10 | 0 | 0 | 0 | -1 |
