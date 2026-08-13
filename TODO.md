@@ -1,5 +1,13 @@
 # PR Review Feedback TODO
 
+## [System] camel-ai/oasis (~198MB) scan timeout blocks find_work
+
+**Observed (2026-08-13)**: `gogetajob scan --all` times out (`status=124`) on camel-ai/oasis, making `FINDER_RESULT=UNAVAILABLE` and forcing fallback_offline for the whole round.
+
+**Action**: Either (a) add camel-ai/oasis to a scan skip-list / exclude set so it stops blocking find_work, or (b) make the scan wrapper skip slow repos gracefully instead of hard-timeout. Repo size ~198MB (near 200MB threshold, guide rule #20) is the likely cause. Wiki note: `wiki/projects/oasis.md`.
+
+---
+
 ## langwatch/langwatch #6432 — satisfy reviewer’s duplicate-reactivation coverage requirement
 
 **Status (2026-08-09 22:10 CST)**: `drewdrewthis` review remains `CHANGES_REQUESTED`; Kagura’s 2026-08-04 replies have no subsequent reviewer response. The requested fix is a code/test follow-up, not suitable for the patrol run.
