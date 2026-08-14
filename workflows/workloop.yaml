@@ -304,13 +304,15 @@ nodes:
     task: '**Stale PR Early Detection — 在 study/plan 之前检查是否已有 PR，避免浪费 plan-review subagent。**
 
       (2026-07-23 gradient: workloop #6852 NemoClaw#7226 stale-pr-fast-path 在 implement 阶段才触发， 但 plan-review subagent 已经白跑了一整轮。前置检查消除这个浪费。)
+      (2026-08-14 gradient: stale-pr-check-false-positive, workloop #8091 — 脚本曾误报 Exit 10 fast-path，跳过 plan+implement，靠 verify 人工 catch 才重做整个实现。已加固脚本 + 本节点要求自证。)
 
       运行: ``` bash tools/stale-pr-check.sh <owner/repo> <issue-number> ```
 
-      **退出码判断:** - Exit 10 → 我的 PR 已存在且 CI 绿 → **直接 fast-path 到 verify**，跳过 study+plan+implement - Exit 11 → 我的 PR 存在但 CI
-      红 → 跳过 study+plan，进 implement fix mode - Exit 0 → 无已有 PR → 正常流程，继续 study
+      **退出码判断:** - Exit 10 → 我的 PR 已存在且 CI 绿/无 CI 自动化 → **直接 fast-path 到 verify**，跳过 study+plan+implement - Exit 11 → 我的 PR 存在但 CI 红/未知 → 跳过 study+plan，进 implement fix mode - Exit 0 → 无已有 PR → 正常流程，继续 study
 
-      汇报: 是否有已有 PR、CI 状态、走哪条分支。 '
+      **⚠️ 自证要求（防 #8091 复发）：** Exit 10/11 必须粘贴脚本实际输出（PR number + CI 行）作为证据。脚本已内置双重校验：① 独立 `gh pr list --repo <r> --author kagura-agent --state open`（无 --search）确认 PR 存在 ② 搜索命中的 PR 必须出现在 plain open-PR 列表中，否则视为 search artifact 忽略。若无法粘贴脚本输出（如 gh 报错）→ 视为 Exit 11，先手动 `gh pr list --repo <r> --author kagura-agent --state open` 验证。
+
+      汇报: 是否有已有 PR、CI 状态、走哪条分支，附脚本输出证据。 '
     branches:
     - condition: Exit 10 — PR 存在且 CI 绿，fast-path
       next: verify
