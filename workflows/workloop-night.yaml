@@ -23,7 +23,8 @@ nodes:
 
   done_dedup:
     task: |
-      状态无变化，跳过本轮。不写 memory（避免重复记录）。
+      状态无变化，跳过本轮。
+      汇报时输出单行标记：`dedup-skip`（cron 侧据此只写一行，避免空转噪声）。
     terminal: true
 
   followup:

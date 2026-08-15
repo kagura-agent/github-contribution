@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-13 20:20 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-15 21:02 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -9,34 +9,33 @@
 |--------|-------|
 | Total PRs submitted (external) | 721 |
 | PRs merged | 245 |
-| PRs open | 5 |
-| PRs closed/rejected | 471 |
+| PRs open | 4 |
+| PRs closed/rejected | 472 |
 | Acceptance rate | 34.2% |
-| Active repos (with open PRs) | 5 |
+| Active repos (with open PRs) | 4 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | jackwener/OpenCLI | 1 |
-| alpic-ai/skybridge | 1 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | agents-exist/story | 1 |
 | langwatch/langwatch | 1 |
 
-## Today (2026-08-13)
+## Today (2026-08-15)
 
-- New PRs (external): 1 — jackwener/OpenCLI#2282 (fix(extension): prevent silent 431 wedge from localhost cookie overflow, fixes #2278)
-- Merged (external): 1 — agentscope-ai/QwenPaw#6331 (chore(website): declare Node 22 requirement)
-- Closed without merge: 0
-- Corrections: QwenPaw#6331 (open→merged, merged 08-13T03:17Z); index reconciliation keeps merged at 245 while closed-non-merge rose to 471
-
-_1 new external PR + 1 merge today. 5 external PRs remain open across 5 repos._
+- New PRs (external): 0
+- Merged (external): 0
+- Closed without merge: 0 (external)
+- Corrections: skybridge#1053 (was listed open in 08-13 dashboard) closed without merge 08-13T14:50Z, after the 08-13 dashboard update; open 5→4, closed 471→472, active repos 5→4
+- Internal only day: kagura-agent/cove #555, #558, #560 all merged (excluded from external stats)
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-15 | 0 | 0 | 0 | 0 |
 | 2026-08-13 | 1 | 1 | 0 | 0 |
 | 2026-08-12 | 1 | 0 | 0 | +1 |
 | 2026-08-11 | 0 | 0 | 0 | -2 |

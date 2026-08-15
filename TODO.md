@@ -148,3 +148,20 @@
 - Fix: Add optional options param to appendToUserMemory
 
 **Action**: workloop code fix needed. Claude Code assignment.
+
+---
+
+## [CI] QwenPaw Full Tests Nightly — failing since 08-09 (6 consecutive nights)
+
+**Observed (2026-08-15 06:1x CST via github-patrol)**: run 31832504935 (08-14) + 5 prior nights all fail.
+- Failing test: `tests/integration/test_plugins.py::test_plugins_catalog_returns_200_with_plugins_field_contract`
+- `GET /api/plugins/catalog` → 500; test documents fallback `{"plugins": [], "error": ...}` when CDN unreachable
+- Repo has issues disabled → track here. Fix: catalog endpoint should catch CDN failure and return fallback contract.
+
+## [CI] NemoClaw Label Merged PR Release Target — fails on merge events
+
+**Observed (2026-08-15 06:1x CST)**: 2 failures today (13:46Z, 19:16Z, run 31832491691): `Error: No strict semver release tags were found` — repo has ZERO tags/releases. Workflow `label-merged-pr-release-target.yaml` calls `loadReleaseTags()` which throws when no semver tags exist. Fix options: (a) create initial release tag, (b) make workflow tolerate no-tags state.
+
+## [CI] opencode fork close-prs — 403 on comment creation
+
+**Observed (2026-08-15 06:1x CST)**: run 31845699331 (dev branch, 22:12Z 08-14): script/github/close-prs.ts fetched 1279 PRs, matched 6 to close, but `POST /repos/.../issues/{n}/comments` → 403 "Resource not accessible by integration". Previous nightly runs (08-12, 08-13) succeeded. Likely GITHUB_TOKEN permission gap when commenting on specific PRs (e.g. fork PRs). Check whether a newly opened fork PR triggered it.
