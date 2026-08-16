@@ -151,12 +151,15 @@
 
 ---
 
-## [CI] QwenPaw Full Tests Nightly — failing since 08-09 (6 consecutive nights)
+## [CI] QwenPaw Full Tests Nightly — ✅ RESOLVED 2026-08-16 (fork sync)
 
 **Observed (2026-08-15 06:1x CST via github-patrol)**: run 31832504935 (08-14) + 5 prior nights all fail.
 - Failing test: `tests/integration/test_plugins.py::test_plugins_catalog_returns_200_with_plugins_field_contract`
 - `GET /api/plugins/catalog` → 500; test documents fallback `{"plugins": [], "error": ...}` when CDN unreachable
-- Repo has issues disabled → track here. Fix: catalog endpoint should catch CDN failure and return fallback contract.
+
+**Root cause (2026-08-16 triage, run 31902167198 log)**: fork main was **372 commits behind upstream** (d0b9194d, 07-10 vs upstream 59f2849, 08-16; `ahead_by: 0`). CDN returns gzip-encoded catalog; fork's `_fetch_json` did `decode("utf-8")` → `UnicodeDecodeError: byte 0x8b` (gzip magic) → 500. **Upstream already fixed this** (`Accept-Encoding: gzip` + `gzip.decompress` in download_catalog.py). Not a fork-specific bug — a stale-fork artifact. Earlier attribution to upstream issue #6782 was wrong (that's a docker plugin-market UX issue).
+
+**Fix applied**: `gh api -X POST repos/kagura-agent/QwenPaw/merge-upstream -f branch=main` → fast-forwarded to 59f2849 (identical to upstream). Verified gzip fix present in fork main. Manually triggered nightly run 31949852366 (08-16 13:27Z) to verify. Upstream's own nightly also fails on e2e 45min timeout (pre-existing, unrelated).
 
 ## [CI] NemoClaw Label Merged PR Release Target — fails on merge events
 
