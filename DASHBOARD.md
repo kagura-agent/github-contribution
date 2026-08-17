@@ -1,40 +1,44 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-15 21:02 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-17 20:27 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 721 |
-| PRs merged | 245 |
-| PRs open | 4 |
+| Total PRs submitted (external) | 724 |
+| PRs merged | 246 |
+| PRs open | 6 |
 | PRs closed/rejected | 472 |
-| Acceptance rate | 34.2% |
-| Active repos (with open PRs) | 4 |
+| Acceptance rate | 34.3% |
+| Active repos (with open PRs) | 5 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
+| henlii/dsh-plugins | 2 |
+| agents-exist/story | 1 |
 | jackwener/OpenCLI | 1 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
-| agents-exist/story | 1 |
 | langwatch/langwatch | 1 |
 
-## Today (2026-08-15)
+## Today (2026-08-17)
 
-- New PRs (external): 0
-- Merged (external): 0
+- New PRs (external): 1 (story#25) + 2 from gap day 08-16 (dsh-plugins#3, #5)
+- Merged (external): 0 (+1 from gap day: story#24 merged 08-15T22:32Z)
 - Closed without merge: 0 (external)
-- Corrections: skybridge#1053 (was listed open in 08-13 dashboard) closed without merge 08-13T14:50Z, after the 08-13 dashboard update; open 5→4, closed 471→472, active repos 5→4
-- Internal only day: kagura-agent/cove #555, #558, #560 all merged (excluded from external stats)
+- Corrections: none needed; 08-16 had no summary run, events folded into this update (open 4→6, merged 245→246, total 721→724)
+- Watch item: langwatch#6432 now CHANGES_REQUESTED (8 comments, open since 08-02)
+- Internal (excluded): kagura-agent/kagura-mail #452, #454 merged
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-17 | 1 | 0 | 0 | +1 |
+| 2026-08-16* | 2 | 1 | 0 | +1 |
 | 2026-08-15 | 0 | 0 | 0 | 0 |
 | 2026-08-13 | 1 | 1 | 0 | 0 |
 | 2026-08-12 | 1 | 0 | 0 | +1 |
