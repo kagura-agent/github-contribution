@@ -28,7 +28,7 @@
 | **P2** | NVIDIA/NemoClaw | 品牌大、领域对齐、已有积累 |
 | **P3** | 其他 tracked repos（deer-flow, opencode, cc-connect 等）| 机会型，P1/P2 无合适 issue 时再看 |
 
-> ⚠️ **Blocklist 优先于 tier 表（2026-08-13）**：`gogetajob blocklist` 是权威 gate，命中即不选，无论 tier。当前矛盾待 Luna 确认：openclaw/openclaw 已 blocklisted（「8 consecutive weeks of violations, high rejection rate, bot-reviewed only」）但上表仍列 P1；anomalyco/opencode 已 blocklisted（「6+ PRs over 8 weeks, zero merges, zero human reviews」）但仍出现在 P3 列举中。在 blocklist 更新前，find_work 应跳过这些 repo。
+> ⚠️ **Blocklist 优先于 tier 表（2026-08-13）**：`gogetajob blocklist` 是权威 gate，命中即不选，无论 tier。openclaw/openclaw 已 blocklisted（「8 consecutive weeks of violations, high rejection rate, bot-reviewed only」）但上表仍列 P1；anomalyco/opencode 已 blocklisted（「6+ PRs over 8 weeks, zero merges, zero human reviews」）但仍出现在 P3 列举中——两处表内列举保留仅作历史记录，实际选择以 blocklist 为准。**2026-08-17 起工具层已强制**：gogetajob `listJobs()` 直接排除 blocklisted repo（commit `a8c9bde`），finder 候选不会再现 openclaw 等 repo 的 issue。
 
 **规则：**
 1. 每轮 find_work 先 `gogetajob feed` 过滤出 P1 repo 的 issue，有合适的就选
