@@ -1,6 +1,6 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-17 20:27 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-18 21:02 CST
 > External contributions only (excludes kagura-agent/* repos)
 
 ## Overview
@@ -24,19 +24,20 @@
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | langwatch/langwatch | 1 |
 
-## Today (2026-08-17)
+## Today (2026-08-18)
 
-- New PRs (external): 1 (story#25) + 2 from gap day 08-16 (dsh-plugins#3, #5)
-- Merged (external): 0 (+1 from gap day: story#24 merged 08-15T22:32Z)
+- New PRs (external): 0
+- Merged (external): 0
 - Closed without merge: 0 (external)
-- Corrections: none needed; 08-16 had no summary run, events folded into this update (open 4→6, merged 245→246, total 721→724)
-- Watch item: langwatch#6432 now CHANGES_REQUESTED (8 comments, open since 08-02)
-- Internal (excluded): kagura-agent/kagura-mail #452, #454 merged
+- Corrections: none; metrics unchanged (724 / 246 / 6 / 472)
+- Watch item: langwatch#6432 still CHANGES_REQUESTED (open since 08-02); TencentDB-Agent-Memory#729 open since 08-03 — oldest external PRs need follow-up
+- Internal (excluded): kagura-agent/cove #563, #564 submitted & merged
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-18 | 0 | 0 | 0 | 0 |
 | 2026-08-17 | 1 | 0 | 0 | +1 |
 | 2026-08-16* | 2 | 1 | 0 | +1 |
 | 2026-08-15 | 0 | 0 | 0 | 0 |
