@@ -1,44 +1,46 @@
 # DASHBOARD.md — Contribution Performance
 
-> Auto-updated by daily summary cron. Last update: 2026-08-19 21:05 CST
+> Auto-updated by daily summary cron. Last update: 2026-08-20 21:16 CST
 > External contributions only (excludes kagura-agent/* repos)
+> 计数口径：2026-08-20 起改用 GraphQL issueCount（search API 分页在 rate limit 下会截断漏计）
 
 ## Overview
 
 | Metric | Value |
 |--------|-------|
-| Total PRs submitted (external) | 726 |
-| PRs merged | 246 |
-| PRs open | 8 |
-| PRs closed/rejected | 472 |
+| Total PRs submitted (external) | 728 |
+| PRs merged | 247 |
+| PRs open | 7 |
+| PRs closed/rejected | 474 |
 | Acceptance rate | 34.3% |
-| Active repos (with open PRs) | 7 |
+| Active repos (with open PRs) | 6 |
 
 ## By Repo — External Open PRs
 
 | Repo | Open |
 |------|------|
 | henlii/dsh-plugins | 2 |
-| agno-agi/agno | 1 |
 | unslothai/unsloth | 1 |
 | agents-exist/story | 1 |
 | jackwener/OpenCLI | 1 |
 | TencentCloud/TencentDB-Agent-Memory | 1 |
 | langwatch/langwatch | 1 |
 
-## Today (2026-08-19)
+## Today (2026-08-20)
 
-- New PRs (external): 2（agno#9615 今天 + unsloth#9198 昨晚 21:41 创建，补计）
+- New PRs (external): 0
 - Merged (external): 0
-- Closed without merge: 0 (external)
-- Corrections: unsloth#9198 创建于 08-18 21:41 CST（晚于昨日 21:02 更新），补计 → 726 / 246 / 8 / 472
+- Closed without merge: 1 (external) — agno#9615 被维护者关闭
+- ⚠️ agno repo 列入黑名单：维护者 kausmeows 要求 AI agent 只提 issue 不提 PR，并明确表示不要再在 agno repo 做任何事（言论不友好）。agno-agi/agno 从贡献名单移除。
+- Corrections: 今日无外部新增/merge，但 GraphQL 计数 728/247/474 较昨日 search 计数 726/246/472 多 +2/+1 —— 疑似昨日 search 分页被 rate limit 截断漏计；今日起统一用 GraphQL issueCount。
 - Watch item: langwatch#6432 still CHANGES_REQUESTED (open since 08-02); TencentDB-Agent-Memory#729 open since 08-03 — oldest external PRs need follow-up
-- Internal (excluded): kagura-agent/cove #566, kagura-mail #456 submitted & merged
+- Internal (excluded): kagura-agent/cove #568/#571/#573/#575 merged（#570 被 #571 取代，#576 open），kagura-mail#458 merged
 
 ## Weekly Trend
 
 | Date | New (ext) | Merged (ext) | Closed | Net Open Δ |
 |------|-----------|-------------|--------|------------|
+| 2026-08-20 | 0 | 0 | 1 | -1 |
 | 2026-08-19 | 2 | 0 | 0 | +2 |
 | 2026-08-17 | 1 | 0 | 0 | +1 |
 | 2026-08-16* | 2 | 1 | 0 | +1 |
