@@ -212,7 +212,7 @@ nodes:
 
       - 每个 repo 输出 `scan-metric`（结果、耗时、heap）；超时证据的 stdout tail 可定位最后完成/卡住的 repo，但不单凭此归因
 
-      - 成功扫描后从本地 gogetajob DB 写入带 UTC 时间戳的结构化 feed cache；扫描不可用时只可使用 ≤6 小时的 cache，过期/缺失仍是 `FINDER_RESULT=UNAVAILABLE`
+      - 成功扫描后从本地 gogetajob DB 写入带 UTC 时间戳的结构化 feed cache；扫描不可用时只可使用 ≤6 小时的 cache，过期/缺失仍是 `FINDER_RESULT=UNAVAILABLE`。缓存生成是**两层轮换制**（2026-08-20 修）：Layer 1 每 repo 取最新 1 条按 `last_scanned_at` 最旧优先（保证 MAX_CHECK=15 覆盖 15 个不同 repo，跨轮轮换）；Layer 2 剩余预算按 stars DESC 补满。
 
       - 批量 gate 过滤（state、已交互、open PR 去重、closed PR 去重、竞争 PR、per-repo 上限）
 
