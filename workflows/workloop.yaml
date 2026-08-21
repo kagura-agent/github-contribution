@@ -363,7 +363,7 @@ nodes:
       \   d. **backlink 扩展**:对每个命中的卡片跑 `MEMEX_HOME=. memex backlinks <slug>`,拉出关联卡片,读取最相关的 1-2 个(向量找入口,图谱做扩展)\n   e. 没搜到 →\
       \ 继续,不纠结\n  f. **⚠️ 不能跳过这一步** - 写了 memex 就必须用,跳过 = 违反\"自己的工具必须用\"\n3. **学习维护者**(从wiki笔记读,不是现场查):\n   a. wiki 笔记里应该已有维护者模式(reflect\
       \ 时沉淀的)\n   b. 如果笔记里没有,说明这是第一次打这个repo--此时才去查最近 merged PR\n   c. 注意:他们怎么写测试?怎么处理边界?PR 描述什么格式?\n3. 读 CONTRIBUTING.md,**重点关注**:\n\
-      \  a. PR 流程要求(changeset?CLA?签名?)(教训:stagehand 没加 changeset 被关)\n   b. 代码风格/lint要求\n   c. 测试要求\n4. 涉及 RFC/标准规范的修改?→ 先读原始\
+      \  a. PR 流程要求(changeset?CLA?签名?)(教训:stagehand 没加 changeset 被关)\n   b. 代码风格/lint要求\n   c. 测试要求\n3a. **查 AI-policy / issues-only 声明**(不能跳过,agno#9615 教训):\n   a. 读 CONTRIBUTING.md 全文搜 \"AI\" / \"agent\" / \"issues only\" / \"don't accept pull requests\" / \"we'll handle them\"\n   b. wiki 笔记 + 历史 issue/PR 评论里 maintainer 是否说过 \"create issues not PRs\" / \"don't do anything in repo\" → 该 repo 是 issues-only,提 PR 会被关且消耗关系资本\n   c. 命中 → 退回 find_work;或仅当 issue 本身有独立价值时只提 issue(不写代码),并记 wiki 标注 hostile/issues-only\n   d. 未命中 → 继续(注意:这不是 Anti-AI 敌视,是把 AI 定位为报 bug 者的温和形态,信号更隐蔽,必须主动搜)\n4. 涉及 RFC/标准规范的修改?→ 先读原始\
       \ RFC 文档再写代码,不凭经验猜 API(教训:Acontext#509 RFC 5987 编码用错 API)\n5. 理解相关代码模块的结构\n5b. **方向存活检查**(check-before-invest,3次教训升级):\n\
       \  a. 这个 issue 涉及的模块/依赖/方向还在项目 roadmap 上吗?\n   b. `git log --oneline -10 --<相关目录>` 看最近是否有大规模重写或删除\n   c. issue 评论里有没有\
       \ maintainer 说\"这个方向要废弃/重写\"?\n  d. 涉及第三方依赖?查是否有安全事件或被弃用的讨论\n   e. 如果方向已死 → 退回 find_work,不浪费时间(教训:DeepTutorlitellm 废弃白做\

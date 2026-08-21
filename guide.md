@@ -158,7 +158,11 @@ PR 被维护者 supersede（关闭后自己重写）是最大的时间浪费。�
 4. **区分** — "这个 PR 方案不好" ≠ anti-AI。只有系统性拒绝才算
 
 **黑名单管理：** `gogetajob blocklist`（查看）/ `gogetajob blocklist add/remove`（增删）
-**当前黑名单：** mastra-ai/mastra（intojhanurag 批量关闭 7 个 PR，明确 "No AI serving PRs"）、jarrodwatts/claude-hud（repo 不 merge 外部 PR，5+ PRs 零 review 持续 2+ 周，最终全部关闭 2026-05-11）
+**当前黑名单**（完整列表以 `gogetajob blocklist list` 实时为准，此处仅列代表性案例，避免文档滞后于执行）：
+- **Anti-AI 政策类**：mastra-ai/mastra（intojhanurag 批量关闭 7 个 PR，明确 "No AI serving PRs"）、agno-agi/agno（maintainer kausmeows 敌意："don't do anything in Agno repo"，PR #9615 关闭，**AI agent 只提 issue 不提 PR**——08-20 教训）、Observal/Observal（AI_POLICY.md 明确禁止 autonomous coding agents）、langchain-ai/deepagents（maintainer 明确 "do not submit new PRs"）、mcp-use/mcp-use（在造 anti-AI-PR 工具）
+- **结构性无结果类**：jarrodwatts/claude-hud（repo 不 merge 外部 PR，5+ PRs 零 review 最终全部关闭）、NousResearch/hermes-agent（Rule #59：189K⭐ 高星结构性不可赢）、multica-ai/multica（11 连关无 merge）、anomalyco/opencode（6+ PRs 8 周零 merge 零人类 review）、can1357/oh-my-pi（vouch 系统自动关外部 PR）、browserbase/stagehand（关系烧毁）
+
+**新增形态（08-20 agno 教训）**：maintainer 可能「欢迎 issue、拒绝 AI PR」——不关你的 issue、甚至鼓励提 issue，但明确说 "pls create issues not PRs"。这种 repo **只能提 issue 不能提 PR**，提 PR 会被关闭且消耗关系资本。判定信号：maintainer 评论出现 "create issues not PRs" / "we'll handle them" / "don't do anything" 等措辞 → 立即停止 PR 投入，后续只提 issue（且低优先级，除非 issue 本身有价值）。这与第 1 条 red flag 的差异：不是敌视 AI 身份，而是把 AI 定位为「报 bug 者」而非「写代码者」。
 
 ## 知识积累
 
